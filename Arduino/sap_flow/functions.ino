@@ -1,12 +1,20 @@
+
+// Enter an infinite loop blinking the LED fast
+void errorBlinkLoop()
+{
+  while (true) {
+    toggleLedDelay(100);
+  }
+}
+
+#define SD_CHIP_SELECT 4
 /*
 */
 void initializeSD_ADC() {
 
   if (!SD.begin(SD_CHIP_SELECT)) {
     Serial.println("Card failed or not present!");
-    ledToggle = true;
-    toggleLedDelay(100);
-    while (1) {};
+    errorBlinkLoop();
   }
   Serial.println("Card Initialized");
 
@@ -93,10 +101,21 @@ void printTime(DateTime DT) {
 void printTimeSpan(TimeSpan TS) {
   Serial.printf("days:%d - %d:%d:%d ", TS.days(), TS.hours(), TS.minutes(), TS.seconds());
 }
-/*
 
-*/
-void setPREH() {  //
+
+/* Wait until the clock rolls over to the next second. */
+void waitForNextSecond()
+{
+  DateTime startTime = rtc_ds3231.now();
+  while (rtc_ds3231.now() == startTime) 
+  {
+    delay(1);
+  }
+}
+
+
+/* Set alarm 1 for the end of the preheat period. */
+void setPreheatAlarm() {
 
   if (rtc_ds3231.alarmFired(2)) {
     writeTextSD("setPREH: A2 fired, clear A1");
@@ -117,10 +136,9 @@ void setPREH() {  //
   if (!rtc_ds3231.setAlarm1(DT, DS3231_A1_Hour))
     Serial.println("Error, alarm 1 PREH wasn't set!");
 }
-/*
 
-*/
-void setH() {  //
+/* Set alarm 1 for the end of the heat period. */
+void setHeatAlarm() {  //
   rtc_ds3231.disableAlarm(1);
   rtc_ds3231.clearAlarm(1);
 
@@ -134,10 +152,9 @@ void setH() {  //
   if (!rtc_ds3231.setAlarm1(DT, DS3231_A1_Hour))
     Serial.println("Error, alarm 1 H wasn't set!");
 }
-/*
 
-*/
-void setPOSTH() {
+/* Set alarm 1 for the end of the postheat period. */
+void setPostheatAlarm() {
   rtc_ds3231.disableAlarm(1);
   rtc_ds3231.clearAlarm(1);
 
@@ -151,46 +168,34 @@ void setPOSTH() {
   if (!rtc_ds3231.setAlarm1(DT, DS3231_A1_Hour))
     Serial.println("Error, alarm 1 POSTH wasn't set!");
 }
-/*
 
-*/
+/* Measure the battery using A0, with 1k/10k voltage divider. 
+ * Returns in unit Volts.
+ */
 float measureVoltage() {
-  pinMode(A7, INPUT);
-  return analogRead(A7) * 0.006445;
+  float batteryLevel = analogRead(A0);
+  // 10k/100k voltage divider
+  batteryLevel *= 11;
+  // 3.3V analog reference
+  batteryLevel *= 3.3;
+  // 10-bit ADC
+  batteryLevel /= 1024;
+  return batteryLevel;
 }
-/*
 
-*/
+/* Reads the thermistors, stores the temps in tempC1 thru tempC8. */
 void readThermistor() {
-  // int16_t ADCout1 = ads1.readADC_SingleEnded(0);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
-  // int16_t ADCout2 = ads1.readADC_SingleEnded(1);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
-  // int16_t ADCout3 = ads1.readADC_SingleEnded(2);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
-  // int16_t ADCout4 = ads1.readADC_SingleEnded(3);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
-  // int16_t ADCout5 = ads2.readADC_SingleEnded(0);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
-  // int16_t ADCout6 = ads2.readADC_SingleEnded(1);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
-  // int16_t ADCout7 = ads2.readADC_SingleEnded(2);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
-  // int16_t ADCout8 = ads2.readADC_SingleEnded(3);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
+  const float SERIESRESISTOR = 10000.0;
+  const float MAX_ADC = 40000; // Stefan changed this from 19999 to 40000, also changed gain to 2x
 
-  ADCout1 = ads1.readADC_SingleEnded(0);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
-  ADCout2 = ads1.readADC_SingleEnded(1);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
-  ADCout3 = ads1.readADC_SingleEnded(2);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
-  ADCout4 = ads1.readADC_SingleEnded(3);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
-  ADCout5 = ads2.readADC_SingleEnded(0);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
-  ADCout6 = ads2.readADC_SingleEnded(1);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
-  ADCout7 = ads2.readADC_SingleEnded(2);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
-  ADCout8 = ads2.readADC_SingleEnded(3);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
-
-  // int16_t ADCout1 = 10000;
-  // int16_t ADCout2 = 11000;
-  // int16_t ADCout3 = 12000;
-  // int16_t ADCout4 = 13000;
-  // int16_t ADCout5 = 14000;
-  // int16_t ADCout6 = 15000;
-  // int16_t ADCout7 = 16000;
-  // int16_t ADCout8 = 17000;
-
-  // Serial.printf("ADCs: %d, %d, %d, %d, %d, %d, %d, %d \n",
-  //               ADCout1, ADCout2, ADCout3, ADCout4, ADCout5, ADCout6, ADCout7, ADCout8);
+  int16_t ADCout1 = ads1.readADC_SingleEnded(0);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
+  int16_t ADCout2 = ads1.readADC_SingleEnded(1);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
+  int16_t ADCout3 = ads1.readADC_SingleEnded(2);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
+  int16_t ADCout4 = ads1.readADC_SingleEnded(3);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
+  int16_t ADCout5 = ads2.readADC_SingleEnded(0);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
+  int16_t ADCout6 = ads2.readADC_SingleEnded(1);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
+  int16_t ADCout7 = ads2.readADC_SingleEnded(2);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
+  int16_t ADCout8 = ads2.readADC_SingleEnded(3);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
 
   float ohms1 = SERIESRESISTOR * ((MAX_ADC / (float)ADCout1) - 1);
   float ohms2 = SERIESRESISTOR * ((MAX_ADC / (float)ADCout2) - 1);
@@ -224,8 +229,8 @@ void readThermistor() {
 /*
 
 */
-void writeSD(int heatingState) {
-  File myFile = SD.open("Js5_08.TXT", FILE_WRITE);
+void writeSD(HeatingState heatingState) {
+  File myFile = SD.open("Js5_03_m.TXT", FILE_WRITE);
 
   String outString(getTimestamp());
   outString += String(", ");
@@ -239,22 +244,24 @@ void writeSD(int heatingState) {
   outString += String(tempC8, 3) + ", ";
 
   switch (heatingState) {
-    case PREH:
+    case HeatingState::PREHEAT:
       {
         outString += String("pre-heat");
         break;
       }
-    case H:
+    case HeatingState::HEAT:
       {
         outString += String("heat");
         break;
       }
-    case POSTH:
+    case HeatingState::POSTHEAT:
       {
         outString += String("post-heat");
         break;
       }
   }
+
+  outString += ", " + String(measureVoltage(), 3);
 
   myFile.println(outString);
   myFile.close();
@@ -264,7 +271,7 @@ void writeSD(int heatingState) {
 
 */
 void writeTextSD(String message) {
-  File myFile = SD.open("Js5_08.TXT", FILE_WRITE);
+  File myFile = SD.open("Js5_03_m.TXT", FILE_WRITE);
 
   String outString = String("M-") + getTimestamp() + "-" + message;
   myFile.println(outString);
@@ -273,7 +280,7 @@ void writeTextSD(String message) {
 /*
 */
 void writeHeaderSD() {
-  File myFile = SD.open("Js5_08.TXT", FILE_WRITE);
+  File myFile = SD.open("Js5_03_m.TXT", FILE_WRITE);
   myFile.printf("M- Starting Event on Device %s\n", DEVICE_NAME);
   
   String datetime = getTimestamp();
@@ -288,13 +295,7 @@ void writeHeaderSD() {
   myFile.printf(" Sleep Time: %d:%d, Wake Time: %d:%d \n", SLEEP_HRS, SLEEP_MINS, WAKE_HRS, WAKE_MINS);
 
   // Report the battery level here
-  float batteryLevel = analogRead(A0);
-  // 10k/100k voltage divider
-  batteryLevel *= 11;
-  // 3.3V analog reference
-  batteryLevel *= 3.3;
-  // 10-bit ADC
-  batteryLevel /= 1024;
+  const float batteryLevel = measureVoltage();
   myFile.print("M-");
   myFile.print(datetime);
   myFile.printf(" Battery voltage: %f V\n", batteryLevel);
@@ -303,9 +304,36 @@ void writeHeaderSD() {
   myFile.close();
 }
 
+void checkForDumpCommand()
+{
+  if (Serial.available() >= 5)
+  {
+    char command[5] = {};
+    for (int i = 0; i < 5; ++i)
+    {
+      int b = Serial.read();
+      if (b < 0) command[i] = 0;
+      else command[i] = b;
+    }
+    // Flush any remainder in the buffer
+    while (Serial.available()) Serial.read();
+
+    if (command[0] == 'd' && command[1] == 'u' && command[2] == 'm' && command[3] == 'p')
+    {
+      // Serial.println("Dump placeholder");
+      dumpSdToSerial();
+    }
+    else
+    {
+      Serial.print("Unknown command: ");
+      Serial.println(command);
+    }
+  }
+}
+
 void dumpSdToSerial()
 {
-  File myFile = SD.open("Js5_08.TXT", FILE_READ);
+  File myFile = SD.open("Js5_03_m.TXT", FILE_READ);
 
   Serial.print("myFile position() = ");
   Serial.println(myFile.position());
