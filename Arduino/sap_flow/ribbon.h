@@ -126,6 +126,12 @@ public:
 
     float readThermistor(int index)
     {
+        if (!valid())
+        {
+            Serial.println("ThermistorBoard is not valid");
+            return false;
+        }
+        
         if (index < 0 || index > 10)
         {
             Serial.println("Invalid index");
@@ -142,6 +148,32 @@ public:
         return adcToTemp(val, 2.048);
     }
 
+    float readShunt()
+    {
+        if (!valid())
+        {
+            Serial.println("ThermistorBoard is not valid");
+            return false;
+        }
+        
+        // The shunt resistor is 0.1 Ohms. The heater probe is 10 Ohms.
+        // If the battery is 12V (probably won't be that high ever), 
+        // there would be 1.2A, so the shunt would read 0.12V.
+        // We will use FSR 0b101, which is +/- 0.256V.
+        float adcFSR = 0.256;
+
+        int32_t val = readAdc(0b011, 0b101);
+        if (val & 0x8000)
+        {
+            val = -0x10000 + val;
+        }
+
+        float adcVoltage = val / 32768.0 * adcFSR;
+        float current = adcVoltage / 0.1;
+        float voltageAcrossHeater = current * 10;
+        return voltageAcrossHeater;
+    }
+
 private:
     uint8_t ADS1115_addr;
     uint8_t TCA9534_addr;
@@ -155,7 +187,7 @@ private:
         uint16_t configReg = 0;
         configReg |= 1 << 15; // Start a conversion
         configReg |= mux << 12;
-        configReg |= fsr << 9; // FSR 0b010 = +/- 1.024V
+        configReg |= fsr << 9; // FSR 0b010 = +/- 2.048V
         configReg |= 1 << 8; // Single-shot
         configReg |= ADS1115_spsBits << 5;
         // Ignore comparator bits

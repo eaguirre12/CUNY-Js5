@@ -294,6 +294,13 @@ void writeSD(HeatingState heatingState) {
 
   outString += ", " + String(measureVoltage(), 3);
 
+  // Shunt measurement disabled, since I need to fix the hardware.
+  // The high side of the shunt resistor exceeds the ADC's maximum input voltage.
+  // if (board.valid())
+  // {
+  //   outString += ", " + String(board.readShunt(), 3);
+  // }
+
   myFile.println(outString);
   myFile.close();
   Serial.println(outString);
