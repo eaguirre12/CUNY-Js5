@@ -185,36 +185,60 @@ float measureVoltage() {
 
 /* Reads the thermistors, stores the temps in tempC1 thru tempC8. */
 void readThermistor() {
-  const float SERIESRESISTOR = 10000.0;
-  const float MAX_ADC = 40000; // Stefan changed this from 19999 to 40000, also changed gain to 2x
 
-  int16_t ADCout1 = ads1.readADC_SingleEnded(0);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
-  int16_t ADCout2 = ads1.readADC_SingleEnded(1);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
-  int16_t ADCout3 = ads1.readADC_SingleEnded(2);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
-  int16_t ADCout4 = ads1.readADC_SingleEnded(3);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
-  int16_t ADCout5 = ads2.readADC_SingleEnded(0);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
-  int16_t ADCout6 = ads2.readADC_SingleEnded(1);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
-  int16_t ADCout7 = ads2.readADC_SingleEnded(2);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
-  int16_t ADCout8 = ads2.readADC_SingleEnded(3);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
+  if (board.valid())
+  {
+    // Note the order! The connections to each thermistor are not in the obvious order.
+    // The first pin connects to the second thermistor, second pin to first thermistor,
+    // then 3->3, 4->4, 5->5. This was determined experimentally, but also could be derived
+    // from the schematic/board layout, if I had that in front of me.
+    tempC1 = board.readThermistor(1);
+    tempC2 = board.readThermistor(0);
+    tempC3 = board.readThermistor(2);
+    tempC4 = board.readThermistor(3);
+    tempC5 = board.readThermistor(4);
 
-  float ohms1 = SERIESRESISTOR * ((MAX_ADC / (float)ADCout1) - 1);
-  float ohms2 = SERIESRESISTOR * ((MAX_ADC / (float)ADCout2) - 1);
-  float ohms3 = SERIESRESISTOR * ((MAX_ADC / (float)ADCout3) - 1);
-  float ohms4 = SERIESRESISTOR * ((MAX_ADC / (float)ADCout4) - 1);
-  float ohms5 = SERIESRESISTOR * ((MAX_ADC / (float)ADCout5) - 1);
-  float ohms6 = SERIESRESISTOR * ((MAX_ADC / (float)ADCout6) - 1);
-  float ohms7 = SERIESRESISTOR * ((MAX_ADC / (float)ADCout7) - 1);
-  float ohms8 = SERIESRESISTOR * ((MAX_ADC / (float)ADCout8) - 1);
+    tempC6 = board.readThermistor(6);
+    tempC7 = board.readThermistor(5);
+    tempC8 = board.readThermistor(7);
+    tempC9 = board.readThermistor(8);
+    tempC10 = board.readThermistor(9);
+  }
+  else
+  {
+    const float SERIESRESISTOR = 10000.0;
+    const float MAX_ADC = 40000; // Stefan changed this from 19999 to 40000, also changed gain to 2x
 
-  // this function temp(ohms) is valid 0-50 C
-  tempC1 = 62.57 - ohms1 * (0.005314) + 0.0000001827 * ohms1 * ohms1 - 0.000000000002448 * ohms1 * ohms1 * ohms1;
-  tempC2 = 62.57 - ohms2 * (0.005314) + 0.0000001827 * ohms2 * ohms2 - 0.000000000002448 * ohms2 * ohms2 * ohms2;
-  tempC3 = 62.57 - ohms3 * (0.005314) + 0.0000001827 * ohms3 * ohms3 - 0.000000000002448 * ohms3 * ohms3 * ohms3;
-  tempC4 = 62.57 - ohms4 * (0.005314) + 0.0000001827 * ohms4 * ohms4 - 0.000000000002448 * ohms4 * ohms4 * ohms4;
-  tempC5 = 62.57 - ohms5 * (0.005314) + 0.0000001827 * ohms5 * ohms5 - 0.000000000002448 * ohms5 * ohms5 * ohms5;
-  tempC6 = 62.57 - ohms6 * (0.005314) + 0.0000001827 * ohms6 * ohms6 - 0.000000000002448 * ohms6 * ohms6 * ohms6;
-  tempC7 = 62.57 - ohms7 * (0.005314) + 0.0000001827 * ohms7 * ohms7 - 0.000000000002448 * ohms7 * ohms7 * ohms7;
-  tempC8 = 62.57 - ohms8 * (0.005314) + 0.0000001827 * ohms8 * ohms8 - 0.000000000002448 * ohms8 * ohms8 * ohms8;
+    int16_t ADCout1 = ads1.readADC_SingleEnded(0);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
+    int16_t ADCout2 = ads1.readADC_SingleEnded(1);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
+    int16_t ADCout3 = ads1.readADC_SingleEnded(2);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
+    int16_t ADCout4 = ads1.readADC_SingleEnded(3);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
+    int16_t ADCout5 = ads2.readADC_SingleEnded(0);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
+    int16_t ADCout6 = ads2.readADC_SingleEnded(1);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
+    int16_t ADCout7 = ads2.readADC_SingleEnded(2);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
+    int16_t ADCout8 = ads2.readADC_SingleEnded(3);  //A0 input on ADS1115; change to 1=A1, 2=A2, 3=A3
+
+    float ohms1 = SERIESRESISTOR * ((MAX_ADC / (float)ADCout1) - 1);
+    float ohms2 = SERIESRESISTOR * ((MAX_ADC / (float)ADCout2) - 1);
+    float ohms3 = SERIESRESISTOR * ((MAX_ADC / (float)ADCout3) - 1);
+    float ohms4 = SERIESRESISTOR * ((MAX_ADC / (float)ADCout4) - 1);
+    float ohms5 = SERIESRESISTOR * ((MAX_ADC / (float)ADCout5) - 1);
+    float ohms6 = SERIESRESISTOR * ((MAX_ADC / (float)ADCout6) - 1);
+    float ohms7 = SERIESRESISTOR * ((MAX_ADC / (float)ADCout7) - 1);
+    float ohms8 = SERIESRESISTOR * ((MAX_ADC / (float)ADCout8) - 1);
+
+    // this function temp(ohms) is valid 0-50 C
+    tempC1 = 62.57 - ohms1 * (0.005314) + 0.0000001827 * ohms1 * ohms1 - 0.000000000002448 * ohms1 * ohms1 * ohms1;
+    tempC2 = 62.57 - ohms2 * (0.005314) + 0.0000001827 * ohms2 * ohms2 - 0.000000000002448 * ohms2 * ohms2 * ohms2;
+    tempC3 = 62.57 - ohms3 * (0.005314) + 0.0000001827 * ohms3 * ohms3 - 0.000000000002448 * ohms3 * ohms3 * ohms3;
+    tempC4 = 62.57 - ohms4 * (0.005314) + 0.0000001827 * ohms4 * ohms4 - 0.000000000002448 * ohms4 * ohms4 * ohms4;
+    tempC5 = 62.57 - ohms5 * (0.005314) + 0.0000001827 * ohms5 * ohms5 - 0.000000000002448 * ohms5 * ohms5 * ohms5;
+    tempC6 = 62.57 - ohms6 * (0.005314) + 0.0000001827 * ohms6 * ohms6 - 0.000000000002448 * ohms6 * ohms6 * ohms6;
+    tempC7 = 62.57 - ohms7 * (0.005314) + 0.0000001827 * ohms7 * ohms7 - 0.000000000002448 * ohms7 * ohms7 * ohms7;
+    tempC8 = 62.57 - ohms8 * (0.005314) + 0.0000001827 * ohms8 * ohms8 - 0.000000000002448 * ohms8 * ohms8 * ohms8;
+    tempC9 = NAN;
+    tempC10 = NAN;
+  }
 
   // If the value is way outside what should be possible, report NaN instead of a crazy value
   if (tempC1 > 150 || tempC1 < -60) tempC1 = NAN;
@@ -225,6 +249,8 @@ void readThermistor() {
   if (tempC6 > 150 || tempC6 < -60) tempC6 = NAN;
   if (tempC7 > 150 || tempC7 < -60) tempC7 = NAN;
   if (tempC8 > 150 || tempC8 < -60) tempC8 = NAN;
+  if (tempC9 > 150 || tempC9 < -60) tempC9 = NAN;
+  if (tempC10 > 150 || tempC10 < -60) tempC10 = NAN;
 }
 /*
 
@@ -242,6 +268,11 @@ void writeSD(HeatingState heatingState) {
   outString += String(tempC6, 3) + ", ";
   outString += String(tempC7, 3) + ", ";
   outString += String(tempC8, 3) + ", ";
+  if (board.valid())
+  {
+    outString += String(tempC9, 3) + ", ";
+    outString += String(tempC10, 3) + ", ";
+  }
 
   switch (heatingState) {
     case HeatingState::PREHEAT:

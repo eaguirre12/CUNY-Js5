@@ -115,6 +115,10 @@ What is the purpose of fireAlarm2()?
     I've implemented that.
 
 
+I'm modifying the program to work with my ribbon sensor.
+
+
+
 */ 
 
 #include <RTClib.h>
@@ -168,7 +172,11 @@ enum class HeatingState
 RTC_DS3231 rtc_ds3231;
 Adafruit_ADS1115 ads1, ads2;
 bool ledToggle = true;
-float tempC1, tempC2, tempC3, tempC4, tempC5, tempC6, tempC7, tempC8;
+float tempC1, tempC2, tempC3, tempC4, tempC5, tempC6, tempC7, tempC8, tempC9, tempC10;
+
+#include "ribbon.h"
+
+ThermistorBoard board{0, 0, 0};
 
 /*
 */
@@ -215,23 +223,30 @@ void setup() {
 
   writeHeaderSD();
 
-  float voltage = measureVoltage();
-  if (voltage < VOLTAGE_CUTOFF)
+  board = findThermistorBoard();
+  if (board.valid())
   {
-    String message;
-    message += "Battery pack voltage is ";
-    message += String(voltage, 3);
-    message += "V which is below the cutoff of ";
-    message += String(VOLTAGE_CUTOFF, 3);
-    message += "V. The measurement cycle will be skipped.\n";
-
-    Serial.print(message);
-    writeTextSD(message);
-
-    // Go to sleep until the next wakeup time
-    putToSleep(rtc_ds3231.now() + TimeSpan(0, T_HRS, T_MINS, T_SECS));
+    board.setup();
+    board.setSps(32);
   }
-  else
+
+  // float voltage = measureVoltage();
+  // if (voltage < VOLTAGE_CUTOFF)
+  // {
+  //   String message;
+  //   message += "Battery pack voltage is ";
+  //   message += String(voltage, 3);
+  //   message += "V which is below the cutoff of ";
+  //   message += String(VOLTAGE_CUTOFF, 3);
+  //   message += "V. The measurement cycle will be skipped.\n";
+
+  //   Serial.print(message);
+  //   writeTextSD(message);
+
+  //   // Go to sleep until the next wakeup time
+  //   putToSleep(rtc_ds3231.now() + TimeSpan(0, T_HRS, T_MINS, T_SECS));
+  // }
+  // else
   {
     sleepOrMeasure();
   }
