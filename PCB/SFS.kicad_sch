@@ -3157,16 +3157,22 @@
 		(uuid "20f9b99d-d909-4b5d-acd0-c839f1df88b5")
 	)
 	(junction
-		(at 127 81.28)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "359502a5-2117-44c5-9d89-c1461a057de2")
-	)
-	(junction
 		(at 140.97 69.85)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "847101f2-aca6-462c-89b1-932c949910fc")
+	)
+	(junction
+		(at 92.71 81.28)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8f86fb9e-dffd-497f-a654-dcec02f140e6")
+	)
+	(junction
+		(at 55.88 30.48)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9253fcdc-7868-4b8f-ad08-881cc5679174")
 	)
 	(junction
 		(at 77.47 33.02)
@@ -3191,12 +3197,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "dc015526-3c2d-4b32-b23c-31a95ae77bf1")
-	)
-	(junction
-		(at 55.88 30.48)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "f8ea807f-b279-46fa-b241-5a5b7e4942c5")
 	)
 	(no_connect
 		(at 139.7 92.71)
@@ -3332,7 +3332,7 @@
 	)
 	(wire
 		(pts
-			(xy 120.65 81.28) (xy 127 81.28)
+			(xy 120.65 81.28) (xy 140.97 81.28)
 		)
 		(stroke
 			(width 0)
@@ -3379,16 +3379,6 @@
 			(type default)
 		)
 		(uuid "3118fbfb-871a-45c5-bd8d-d9c9b49c4da1")
-	)
-	(wire
-		(pts
-			(xy 127 81.28) (xy 140.97 81.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "32a702b5-ab01-4138-9b9c-476033c1917d")
 	)
 	(wire
 		(pts
@@ -3512,6 +3502,16 @@
 	)
 	(wire
 		(pts
+			(xy 55.88 30.48) (xy 92.71 30.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "668e4d1c-4f96-4de7-a215-1be41716bf29")
+	)
+	(wire
+		(pts
 			(xy 63.5 88.9) (xy 63.5 72.39)
 		)
 		(stroke
@@ -3562,7 +3562,7 @@
 	)
 	(wire
 		(pts
-			(xy 77.47 81.28) (xy 105.41 81.28)
+			(xy 77.47 81.28) (xy 92.71 81.28)
 		)
 		(stroke
 			(width 0)
@@ -3622,16 +3622,6 @@
 	)
 	(wire
 		(pts
-			(xy 127 30.48) (xy 127 81.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9fee0aa1-1fa7-4208-8eac-cfaa4664abc0")
-	)
-	(wire
-		(pts
 			(xy 72.39 110.49) (xy 57.15 110.49)
 		)
 		(stroke
@@ -3669,6 +3659,16 @@
 			(type default)
 		)
 		(uuid "bd94a3e0-1c9a-4899-8e22-233621f942de")
+	)
+	(wire
+		(pts
+			(xy 92.71 81.28) (xy 105.41 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c7e71e55-f015-4487-8015-b9f42b5ac54a")
 	)
 	(wire
 		(pts
@@ -3742,16 +3742,6 @@
 	)
 	(wire
 		(pts
-			(xy 55.88 30.48) (xy 127 30.48)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e3b354af-9012-4eea-a1c7-cc6e008a3b47")
-	)
-	(wire
-		(pts
 			(xy 83.82 88.9) (xy 83.82 93.98)
 		)
 		(stroke
@@ -3809,6 +3799,16 @@
 			(type default)
 		)
 		(uuid "f9b283bd-832e-4da4-a2b0-78d8db8a91c0")
+	)
+	(wire
+		(pts
+			(xy 92.71 30.48) (xy 92.71 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fbb4ea1a-d9e8-4848-bd0b-4b296094a28f")
 	)
 	(text "Mounting holes for the two\nbosses inside the enclosure.\n80mm apart"
 		(exclude_from_sim no)
