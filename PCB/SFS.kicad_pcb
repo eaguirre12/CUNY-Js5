@@ -162,7 +162,7 @@
 	(net 40 "unconnected-(A1-D11-Pad23)")
 	(net 41 "unconnected-(A1-D12-Pad24)")
 	(net 42 "unconnected-(A1-D13-Pad25)")
-	(net 43 "Net-(A1-USB)")
+	(net 43 "unconnected-(A1-USB-Pad26)")
 	(net 44 "unconnected-(A1-EN-Pad27)")
 	(net 45 "unconnected-(A1-VBAT-Pad28)")
 	(net 46 "+6V")
@@ -223,7 +223,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -235,8 +235,10 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/c35c4897-5a5c-4c21-ac5d-f96e58557c12")
-		(sheetfile "Untitled.kicad_sch")
+		(sheetname "Root")
+		(sheetfile "SFS.kicad_sch")
 		(attr through_hole)
 		(fp_line
 			(start 0.92 0)
@@ -416,7 +418,7 @@
 				)
 			)
 		)
-		(property "Description" "Generic screw terminal, single row, 01x08, script generated (kicad-library-utils/schlib/autogen/connector/)"
+		(property "Description" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -428,6 +430,7 @@
 				)
 			)
 		)
+		(property ki_fp_filters "TerminalBlock*:*")
 		(path "/119654ee-695d-4120-8250-46218bfe8958/425d052a-4c06-4ee1-b134-72f3bec86aac")
 		(sheetname "Analog")
 		(sheetfile "analog.kicad_sch")
@@ -881,7 +884,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -893,8 +896,10 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/2edbc815-5758-4b7e-8de0-52c4c9b13dad")
-		(sheetfile "Untitled.kicad_sch")
+		(sheetname "Root")
+		(sheetfile "SFS.kicad_sch")
 		(attr through_hole)
 		(fp_line
 			(start 0.92 0)
@@ -1073,7 +1078,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -1085,6 +1090,7 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/119654ee-695d-4120-8250-46218bfe8958/8985a145-adfa-4b2c-b996-0da3cfa3f76e")
 		(sheetname "Analog")
 		(sheetfile "analog.kicad_sch")
@@ -1268,7 +1274,7 @@
 				)
 			)
 		)
-		(property "Description" "Mounting Hole without connection"
+		(property "Description" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -1280,8 +1286,10 @@
 				)
 			)
 		)
+		(property ki_fp_filters "MountingHole*")
 		(path "/58443603-1893-45ae-93c1-6379516182fd")
-		(sheetfile "Untitled.kicad_sch")
+		(sheetname "Root")
+		(sheetfile "SFS.kicad_sch")
 		(attr exclude_from_pos_files)
 		(fp_circle
 			(center 0 0)
@@ -1331,7 +1339,7 @@
 		(descr "TO-92 leads in-line, narrow, oval pads, drill 0.75mm (see NXP sot054_po.pdf)")
 		(tags "to-92 sc-43 sc-43a sot54 PA33 transistor")
 		(property "Reference" "U7"
-			(at 1.27 3.81 0)
+			(at -2.032 1.651 0)
 			(layer "F.SilkS")
 			(uuid "b6c64c46-4078-4226-ba22-f8a1336061ca")
 			(effects
@@ -1341,9 +1349,9 @@
 				)
 			)
 		)
-		(property "Value" "~"
-			(at 1.27 2.79 90)
-			(layer "F.Fab")
+		(property "Value" "LT1460"
+			(at 1.27 3.429 90)
+			(layer "F.SilkS")
 			(uuid "f927a299-6a5e-4b7c-9999-f8cff1068d67")
 			(effects
 				(font
@@ -1388,6 +1396,7 @@
 				)
 			)
 		)
+		(property ki_fp_filters "TO-92*")
 		(path "/119654ee-695d-4120-8250-46218bfe8958/b806335f-9960-4d2d-a0e5-980c30b43a8a")
 		(sheetname "Analog")
 		(sheetfile "analog.kicad_sch")
@@ -1571,7 +1580,7 @@
 		)
 		(property "Value" "L7806"
 			(at 2.54 2.5 90)
-			(layer "F.Fab")
+			(layer "F.SilkS")
 			(uuid "d1dd6c17-43cc-4407-9644-54a929c5267b")
 			(effects
 				(font
@@ -1592,7 +1601,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "http://www.st.com/content/ccc/resource/technical/document/datasheet/41/4f/b3/b0/12/d4/47/88/CD00000444.pdf/files/CD00000444.pdf/jcr:content/translations/en.CD00000444.pdf"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -1604,7 +1613,7 @@
 				)
 			)
 		)
-		(property "Description" "Positive 1.5A 35V Linear Regulator, Fixed Output 6V, TO-220/TO-263/TO-252"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -1616,8 +1625,10 @@
 				)
 			)
 		)
+		(property ki_fp_filters "TO?252* TO?263* TO?220*")
 		(path "/86e0b20f-4184-437c-b83a-fef5430a206e")
-		(sheetfile "Untitled.kicad_sch")
+		(sheetname "Root")
+		(sheetfile "SFS.kicad_sch")
 		(attr through_hole)
 		(fp_line
 			(start -2.58 1.371)
@@ -1907,7 +1918,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -1919,6 +1930,7 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/119654ee-695d-4120-8250-46218bfe8958/78ba2a51-deac-4ac4-b814-f0596c108100")
 		(sheetname "Analog")
 		(sheetfile "analog.kicad_sch")
@@ -2066,8 +2078,8 @@
 			)
 		)
 		(property "Value" "2N7000"
-			(at 1.27 2.79 90)
-			(layer "F.Fab")
+			(at -2.667 -0.254 180)
+			(layer "F.SilkS")
 			(uuid "c32edd1b-cf2c-45ea-af65-ad41a2637465")
 			(effects
 				(font
@@ -2088,7 +2100,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.vishay.com/docs/70226/70226.pdf"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -2100,7 +2112,7 @@
 				)
 			)
 		)
-		(property "Description" "0.2A Id, 200V Vds, N-Channel MOSFET, 2.6V Logic Level, TO-92"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -2112,8 +2124,10 @@
 				)
 			)
 		)
+		(property ki_fp_filters "TO?92*")
 		(path "/1f0c760e-2e37-4c18-8292-11737daad640")
-		(sheetfile "Untitled.kicad_sch")
+		(sheetname "Root")
+		(sheetfile "SFS.kicad_sch")
 		(attr through_hole)
 		(fp_line
 			(start -0.53 1.85)
@@ -2327,7 +2341,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -2339,6 +2353,7 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/119654ee-695d-4120-8250-46218bfe8958/b2622a67-b333-4f81-8d56-1bb869c2c02c")
 		(sheetname "Analog")
 		(sheetfile "analog.kicad_sch")
@@ -2484,7 +2499,7 @@
 				)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "ADS1115"
 			(at -1.27 11.66 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -2800,7 +2815,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -2812,6 +2827,7 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/119654ee-695d-4120-8250-46218bfe8958/a0dfd9c3-f8d5-4228-9c3d-b9ef24ba32ac")
 		(sheetname "Analog")
 		(sheetfile "analog.kicad_sch")
@@ -2948,7 +2964,7 @@
 		(descr "TO-262-3, Vertical, RM 2.54mm, IIPAK, I2PAK, see http://www.onsemi.com/pub/Collateral/EN8586-D.PDF")
 		(tags "TO-262-3 Vertical RM 2.54mm IIPAK I2PAK")
 		(property "Reference" "Q1"
-			(at -1.27 3.81 -90)
+			(at 6.477 -4.064 -90)
 			(layer "F.SilkS")
 			(uuid "73e2807b-8349-467e-8140-0a8764c53842")
 			(effects
@@ -2959,8 +2975,8 @@
 			)
 		)
 		(property "Value" "IRF9540N"
-			(at 2.54 2.54 -90)
-			(layer "F.Fab")
+			(at 2.54 2.794 270)
+			(layer "F.SilkS")
 			(uuid "f1963063-336b-4caa-81e5-f970f379fc3d")
 			(effects
 				(font
@@ -2981,7 +2997,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "http://www.irf.com/product-info/datasheets/data/irf9540n.pdf"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -2993,7 +3009,7 @@
 				)
 			)
 		)
-		(property "Description" "-23A Id, -100V Vds, 117mOhm Rds, P-Channel HEXFET Power MOSFET, TO-220"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3005,8 +3021,10 @@
 				)
 			)
 		)
+		(property ki_fp_filters "TO?220*")
 		(path "/66b05165-5900-433c-9050-1fb751e72439")
-		(sheetfile "Untitled.kicad_sch")
+		(sheetname "Root")
+		(sheetfile "SFS.kicad_sch")
 		(attr through_hole)
 		(fp_line
 			(start -2.58 1.971)
@@ -3220,7 +3238,7 @@
 				)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "ADS1115"
 			(at -1.27 11.66 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3524,7 +3542,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://cdn-learn.adafruit.com/downloads/pdf/adafruit-feather-m0-adalogger.pdf"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3536,7 +3554,7 @@
 				)
 			)
 		)
-		(property "Description" "Microcontroller module with SAMD21 Cortex-M0 MCU and SD card reader"
+		(property "Description" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3548,8 +3566,10 @@
 				)
 			)
 		)
+		(property ki_fp_filters "Adafruit*Feather*")
 		(path "/d8260833-ffe2-4399-bda3-b445058965f9")
-		(sheetfile "Untitled.kicad_sch")
+		(sheetname "Root")
+		(sheetfile "SFS.kicad_sch")
 		(attr through_hole)
 		(fp_line
 			(start -1.7 1)
@@ -4149,9 +4169,9 @@
 			(drill 1.016)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 43 "Net-(A1-USB)")
+			(net 43 "unconnected-(A1-USB-Pad26)")
 			(pinfunction "USB")
-			(pintype "power_in")
+			(pintype "power_in+no_connect")
 			(thermal_bridge_angle 45)
 			(uuid "0925bc57-6834-47d1-a98d-cd84801ba41b")
 		)
@@ -4243,7 +4263,7 @@
 				)
 			)
 		)
-		(property "Description" "Push button switch, generic, two pins"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -4256,7 +4276,8 @@
 			)
 		)
 		(path "/d340ddfb-9758-496a-a26f-a62358a0f378")
-		(sheetfile "Untitled.kicad_sch")
+		(sheetname "Root")
+		(sheetfile "SFS.kicad_sch")
 		(attr through_hole)
 		(fp_line
 			(start 5.5 -1)
@@ -4598,7 +4619,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -4610,6 +4631,7 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/119654ee-695d-4120-8250-46218bfe8958/89a3d69d-8aad-45a7-8ade-d349dcede077")
 		(sheetname "Analog")
 		(sheetfile "analog.kicad_sch")
@@ -4792,7 +4814,7 @@
 				)
 			)
 		)
-		(property "Description" "Generic screw terminal, single row, 01x08, script generated (kicad-library-utils/schlib/autogen/connector/)"
+		(property "Description" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -4804,6 +4826,7 @@
 				)
 			)
 		)
+		(property ki_fp_filters "TerminalBlock*:*")
 		(path "/119654ee-695d-4120-8250-46218bfe8958/4a274516-2e18-414b-9ae0-fe1809cf348c")
 		(sheetname "Analog")
 		(sheetfile "analog.kicad_sch")
@@ -5258,7 +5281,7 @@
 				)
 			)
 		)
-		(property "Description" "Generic screw terminal, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5270,8 +5293,10 @@
 				)
 			)
 		)
+		(property ki_fp_filters "TerminalBlock*:*")
 		(path "/97a1cf6b-5795-435c-8c78-2fb8e6de4a6b")
-		(sheetfile "Untitled.kicad_sch")
+		(sheetname "Root")
+		(sheetfile "SFS.kicad_sch")
 		(attr through_hole)
 		(fp_line
 			(start 1.905 -7.3)
@@ -5515,9 +5540,9 @@
 				)
 			)
 		)
-		(property "Value" "RFP30N06LE"
-			(at 2.54 2.54 -90)
-			(layer "F.Fab")
+		(property "Value" "IRLB4132"
+			(at 2.413 2.921 270)
+			(layer "F.SilkS")
 			(uuid "fa0e6484-988d-4040-b2d6-38974d80c4cf")
 			(effects
 				(font
@@ -5538,7 +5563,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/828/IRLB4132PbF.pdf"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5550,7 +5575,7 @@
 				)
 			)
 		)
-		(property "Description" "N-MOSFET transistor, gate/drain/source"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5563,7 +5588,8 @@
 			)
 		)
 		(path "/65eec94c-c83f-4848-908f-e168da59ca05")
-		(sheetfile "Untitled.kicad_sch")
+		(sheetname "Root")
+		(sheetfile "SFS.kicad_sch")
 		(attr through_hole)
 		(fp_line
 			(start -2.58 1.971)
@@ -5813,7 +5839,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5825,6 +5851,7 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/119654ee-695d-4120-8250-46218bfe8958/f11ab4a5-afb8-44a4-b47a-92ffe0951be6")
 		(sheetname "Analog")
 		(sheetfile "analog.kicad_sch")
@@ -5970,7 +5997,7 @@
 				)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "DS3231"
 			(at 0 3.81 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -6019,7 +6046,8 @@
 			)
 		)
 		(path "/0d44394a-c368-40c8-8e17-daf01e0a5a0a")
-		(sheetfile "Untitled.kicad_sch")
+		(sheetname "Root")
+		(sheetfile "SFS.kicad_sch")
 		(attr through_hole)
 		(fp_rect
 			(start -11.43 -2.54)
@@ -6217,7 +6245,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -6229,6 +6257,7 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/119654ee-695d-4120-8250-46218bfe8958/c152fcea-3a28-4436-be4c-283b0f561d5c")
 		(sheetname "Analog")
 		(sheetfile "analog.kicad_sch")
@@ -6410,7 +6439,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -6422,6 +6451,7 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/119654ee-695d-4120-8250-46218bfe8958/87192d41-2cb2-4ca2-b429-40246aa7c38f")
 		(sheetname "Analog")
 		(sheetfile "analog.kicad_sch")
@@ -6603,7 +6633,7 @@
 				)
 			)
 		)
-		(property "Description" "Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+		(property "Description" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -6615,8 +6645,10 @@
 				)
 			)
 		)
+		(property ki_fp_filters "TerminalBlock*:*")
 		(path "/495ace35-aa34-4c91-bdb0-f1cf9e68963c")
-		(sheetfile "Untitled.kicad_sch")
+		(sheetname "Root")
+		(sheetfile "SFS.kicad_sch")
 		(attr through_hole)
 		(fp_line
 			(start -7.06 -7.3)
@@ -6810,7 +6842,7 @@
 				)
 			)
 		)
-		(property "Description" "Mounting Hole without connection"
+		(property "Description" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -6822,8 +6854,10 @@
 				)
 			)
 		)
+		(property ki_fp_filters "MountingHole*")
 		(path "/b793bf15-9961-414d-abbc-12b16f148d2c")
-		(sheetfile "Untitled.kicad_sch")
+		(sheetname "Root")
+		(sheetfile "SFS.kicad_sch")
 		(attr exclude_from_pos_files)
 		(fp_circle
 			(center 0 0)
@@ -6918,7 +6952,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -6930,8 +6964,10 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/443d1e85-aa22-4084-853a-4dfad392a299")
-		(sheetfile "Untitled.kicad_sch")
+		(sheetname "Root")
+		(sheetfile "SFS.kicad_sch")
 		(attr through_hole)
 		(fp_line
 			(start 0.92 0)
@@ -7488,18 +7524,6 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "L7806"
-		(at 104.14 82.55 0)
-		(layer "F.SilkS")
-		(uuid "998f9a30-08e2-4313-ba41-690319441fb4")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-			(justify left bottom)
-		)
-	)
 	(gr_text "Check orientation!"
 		(at 52.07 105.41 90)
 		(layer "F.SilkS")
@@ -7588,18 +7612,6 @@
 		(at 75.875 53.3 0)
 		(layer "F.SilkS")
 		(uuid "ec34e990-79ba-4027-999e-f1b8092b91ca")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-			(justify left bottom)
-		)
-	)
-	(gr_text "LT1460"
-		(at 67.99 85.15 90)
-		(layer "F.SilkS")
-		(uuid "f190dd48-7d2f-4fa8-ba70-927a551ab534")
 		(effects
 			(font
 				(size 1 1)
