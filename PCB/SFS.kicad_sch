@@ -5186,7 +5186,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "RFP30N06LE"
+		(property "Value" "IRLB4132"
 			(at 203.2 36.195 0)
 			(effects
 				(font
@@ -5204,7 +5204,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/828/IRLB4132PbF.pdf"
 			(at 196.85 34.29 0)
 			(effects
 				(font
