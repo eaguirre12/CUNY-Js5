@@ -163,6 +163,7 @@ enum class HeatingState
 #define HEATER_PIN 6
 
 // A battery voltage of 0.9V per cell is a commonly cited cutoff voltage for NiMH cells
+#define ENABLE_VOLTAGE_CUTOFF (0)
 #define VOLTAGE_CUTOFF (0.9 * 8)
 
 RTC_DS3231 rtc_ds3231;
@@ -215,6 +216,7 @@ void setup() {
 
   writeHeaderSD();
 
+#if ENABLE_VOLTAGE_CUTOFF
   float voltage = measureVoltage();
   if (voltage < VOLTAGE_CUTOFF)
   {
@@ -232,6 +234,7 @@ void setup() {
     putToSleep(rtc_ds3231.now() + TimeSpan(0, T_HRS, T_MINS, T_SECS));
   }
   else
+#endif
   {
     sleepOrMeasure();
   }
