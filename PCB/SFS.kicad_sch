@@ -9394,7 +9394,7 @@
 		(at 177.8 41.91 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
@@ -10172,7 +10172,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" " C3113"
+		(property "LCSC" "C3113"
 			(at 139.7 99.06 90)
 			(effects
 				(font
@@ -11714,7 +11714,7 @@
 		(at 177.8 34.29 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
@@ -12972,7 +12972,7 @@
 		(at 116.84 144.78 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "d8260833-ffe2-4399-bda3-b445058965f9")
@@ -13718,7 +13718,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Battery:BatteryHolder_Keystone_1060_1x2032"
+		(property "Footprint" "AAA_Library:BatteryHolder_QJ_C70377_1x2032"
 			(at 49.53 77.216 90)
 			(effects
 				(font
@@ -13737,6 +13737,15 @@
 			)
 		)
 		(property "Description" "Single-cell battery"
+			(at 49.53 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C70377"
 			(at 49.53 78.74 0)
 			(effects
 				(font
