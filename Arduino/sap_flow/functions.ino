@@ -233,7 +233,7 @@ void readThermistor() {
 
 */
 void writeSD(HeatingState heatingState) {
-  File myFile = SD.open("Js5_03_m.TXT", FILE_WRITE);
+  File myFile = SD.open("SFtest.TXT", FILE_WRITE);
 
   String outString(getTimestamp());
   outString += String(", ");
@@ -274,7 +274,7 @@ void writeSD(HeatingState heatingState) {
 
 */
 void writeTextSD(String message) {
-  File myFile = SD.open("Js5_03_m.TXT", FILE_WRITE);
+  File myFile = SD.open("SFtest.TXT", FILE_WRITE);
 
   String outString = String("M-") + getTimestamp() + "-" + message;
   myFile.println(outString);
@@ -283,7 +283,7 @@ void writeTextSD(String message) {
 /*
 */
 void writeHeaderSD() {
-  File myFile = SD.open("Js5_03_m.TXT", FILE_WRITE);
+  File myFile = SD.open("SFtest.TXT", FILE_WRITE);
   myFile.printf("M- Starting Event on Device %s\n", DEVICE_NAME);
   
   String datetime = getTimestamp();
@@ -336,7 +336,7 @@ void checkForDumpCommand()
 
 void dumpSdToSerial()
 {
-  File myFile = SD.open("Js5_03_m.TXT", FILE_READ);
+  File myFile = SD.open("SFtest.TXT", FILE_READ);
 
   Serial.print("myFile position() = ");
   Serial.println(myFile.position());
