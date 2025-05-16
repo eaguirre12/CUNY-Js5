@@ -122,12 +122,12 @@ What is the purpose of fireAlarm2()?
 #include <Adafruit_ADS1X15.h>
 /// T is the period between measurement events
 #define T_HRS 0
-#define T_MINS 3
+#define T_MINS 2
 #define T_SECS 0
 /// PREH is the measurement period before heat on
 #define PREH_HRS 0
 #define PREH_MINS 0
-#define PREH_SECS 20
+#define PREH_SECS 10
 /// H is the period to apply heat
 #define H_HRS 0
 #define H_MINS 0
@@ -135,7 +135,7 @@ What is the purpose of fireAlarm2()?
 /// POTSTH is the measurement period after heat
 #define POSTH_HRS 0
 #define POSTH_MINS 0
-#define POSTH_SECS 100
+#define POSTH_SECS 10
 /// TS is the read data period between measuements. The shortest cycle
 #define TS_HRS 0
 #define TS_MINS 0
@@ -150,7 +150,7 @@ What is the purpose of fireAlarm2()?
 //         PREH   H       POSTH
 //.......|............................T....................|....................
 /// note: T > PREH + H + POSTH > TS
-#define DEVICE_NAME "Js5_03_m"
+#define DEVICE_NAME "SFtest"
 // states (periods) in cycle
 enum class HeatingState
 {
