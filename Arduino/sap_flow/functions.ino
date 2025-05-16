@@ -4,6 +4,7 @@ void errorBlinkLoop()
 {
   while (true) {
     toggleLedDelay(100);
+    digitalWrite(ERROR_LED, !digitalRead(ERROR_LED));
   }
 }
 
@@ -22,10 +23,12 @@ void initializeSD_ADC() {
   ads2.setGain(GAIN_TWO);
   if (!ads1.begin(0x48)) {
     Serial.println("Failed to initialized ADS1.");
+    digitalWrite(ERROR_LED, 1);
     //while (1) {};
   }
   if (!ads2.begin(0x49)) {
     Serial.println("Failed to initialized ADS2.");
+    digitalWrite(ERROR_LED, 1);
     //while (1) {};
   }
 }
@@ -367,12 +370,18 @@ void dumpSdToSerial()
 void heaterOn() {
   pinMode(HEATER_PIN, OUTPUT);
   digitalWrite(HEATER_PIN, HIGH);
+
+  digitalWrite(YELLOW_LED, HIGH);
+  digitalWrite(GREEN_LED, LOW);
 }
 /*
 */
 void heaterOFF() {
   pinMode(HEATER_PIN, OUTPUT);
   digitalWrite(HEATER_PIN, LOW);
+  
+  digitalWrite(YELLOW_LED, LOW);
+  digitalWrite(GREEN_LED, HIGH);
 }
 /*
 */

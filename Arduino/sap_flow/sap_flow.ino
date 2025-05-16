@@ -171,11 +171,48 @@ Adafruit_ADS1115 ads1, ads2;
 bool ledToggle = true;
 float tempC1, tempC2, tempC3, tempC4, tempC5, tempC6, tempC7, tempC8;
 
+// The red LED at the top of the shares a pin with the on-board red LED
+#define RED_LED 13
+#define YELLOW_LED 12
+#define GREEN_LED 11
+#define POWER_LED 10
+#define TIMER_LED 9
+#define ERROR_LED 5
+
+
 /*
 */
 void setup() {
   Serial.begin(9600); // Baud rate ignored on this platform
-  delay(6000);
+
+  // Turn on all LEDs for 1 second on power up
+  pinMode(RED_LED, OUTPUT);
+  pinMode(YELLOW_LED, OUTPUT);
+  pinMode(GREEN_LED, OUTPUT);
+  pinMode(POWER_LED, OUTPUT);
+  pinMode(TIMER_LED, OUTPUT);
+  pinMode(ERROR_LED, OUTPUT);
+  digitalWrite(RED_LED, 1);
+  digitalWrite(YELLOW_LED, 1);
+  digitalWrite(GREEN_LED, 1);
+  digitalWrite(POWER_LED, 1);
+  digitalWrite(TIMER_LED, 1);
+  digitalWrite(ERROR_LED, 1);
+  delay(1000);
+
+  digitalWrite(RED_LED, 0);
+  digitalWrite(YELLOW_LED, 0);
+  digitalWrite(GREEN_LED, 0);
+  // Leave power LED on
+  digitalWrite(TIMER_LED, 0);
+  digitalWrite(ERROR_LED, 0);
+  delay(1000);
+
+  digitalWrite(POWER_LED, 1);
+  delay(4000);
+
+
+
   Serial.println(__FILE__);
 
   pinMode(LED_BUILTIN, OUTPUT);
@@ -410,8 +447,11 @@ void measureSetNextT() {
 
     // Toggle the LED, but don't delay 1 second. Instead poll the RTC time until we reach the next second.
     toggleLedDelay(0);
+    digitalWrite(TIMER_LED, !digitalRead(TIMER_LED));
     waitForNextSecond();
   }  // end while(true)
+
+  digitalWrite(GREEN_LED, LOW);
 
   DateTime wakeTime = startTime + TimeSpan(0, T_HRS, T_MINS, T_SECS);
 
