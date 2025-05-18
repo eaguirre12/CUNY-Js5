@@ -321,3 +321,42 @@ Options
 
 
 
+## 2025-05-18
+
+Checking the TL431 reference circuit again
+    Falstad shows 8mA flowing in and 2.85V on the output!
+    Oh, right, I was regulating to 2.7 not 2.5...
+    Equivalent resistance from all voltage dividers is 2.5k
+    My circuit is wrong
+    https://tinyurl.com/ymlnezdh
+
+
+Should I switch to a regulator with an enable pin and avoid the whole PFET?
+
+
+What is using the most power from the battery?
+    The CPU will use about 5 mA
+        https://ww1.microchip.com/downloads/aemDocuments/documents/MCU32/ProductDocuments/DataSheets/SAM-D21-DA1-Family-Data-Sheet-DS40001882H.pdf
+        Table 37-8
+    LEDs
+        Less than 1 mA each -- but that can still add up
+        Let's call it 2 mA total
+    Reference
+        1 mA
+    Voltage dividers
+        1 mA
+    Let's call all the non-heater components 10 mA
+    Heater
+        What is the resistance of the heater probe on the East 30?
+            The manual says it's 1041 Ohm/meter. So I guess it depends on the length of the probe?
+            If it's 5 cm, that would be like 50 Ohms.
+            The JS5 one was calculated as 10 Ohms
+        If it's 10 Ohms, it's 1A. If it's 50 Ohms, it's 200 mA.
+        If the heater is on for 3 seconds and the full measurement cycle is 90 seconds, then we can divide by 30 to get the equivalent current consumption
+        1A / 30 = 33 mA
+        0.2A / 30 = 7 mA
+    Ok, that's a big difference. 
+        The heater resistance is really important.
+        Also the heat pulse time and measurement time are important -- or rather, their ratio.
+    What does this mean for the TL431 circuit?
+        We want to shoot for the minimum shunt current of 1mA, but there's no need to reach for a more efficient reference than that.
