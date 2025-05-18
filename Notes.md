@@ -331,8 +331,6 @@ Checking the TL431 reference circuit again
     https://tinyurl.com/ymlnezdh
 
 
-Should I switch to a regulator with an enable pin and avoid the whole PFET?
-
 
 What is using the most power from the battery?
     The CPU will use about 5 mA
@@ -360,3 +358,27 @@ What is using the most power from the battery?
         Also the heat pulse time and measurement time are important -- or rather, their ratio.
     What does this mean for the TL431 circuit?
         We want to shoot for the minimum shunt current of 1mA, but there's no need to reach for a more efficient reference than that.
+
+
+
+Should I switch to a regulator with an enable pin and avoid the whole PFET?
+    The total current on 3.3V is quite low -- 10 mA
+
+
+Current sense resistor
+    I chose 0.1 Ohm
+    If the heater is 10 Ohm, that's a 1% loss. Totally fine, but perhaps on the low side.
+    At 1A, it will drop 100 mV.
+    ADC
+        What architecture is it?
+        The ADC has 12-bit resolution
+        The ADC has 1/2x to 16x gain settings
+        We could use the external reference, but I don't think that's necessary.
+        At 1x scaling, 
+
+
+Could I use the built-in ADC instead of external?
+    There's plenty of ADC channels. 
+        Some of the pins that aren't labeled as analog on the uC board do in fact support analog.
+    It supports differential measurements
+        The datasheet says the negative input must be connected to ground. Well then what's the point of a differential measurement? Or did they mean for single-ended it must be connected to ground?
