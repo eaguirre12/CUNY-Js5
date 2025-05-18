@@ -4,6 +4,7 @@ void errorBlinkLoop()
 {
   while (true) {
     toggleLedDelay(100);
+    digitalWrite(ERROR_LED, !digitalRead(ERROR_LED));
   }
 }
 
@@ -22,10 +23,12 @@ void initializeSD_ADC() {
   ads2.setGain(GAIN_TWO);
   if (!ads1.begin(0x48)) {
     Serial.println("Failed to initialized ADS1.");
+    digitalWrite(ERROR_LED, 1);
     //while (1) {};
   }
   if (!ads2.begin(0x49)) {
     Serial.println("Failed to initialized ADS2.");
+    digitalWrite(ERROR_LED, 1);
     //while (1) {};
   }
 }
@@ -230,7 +233,7 @@ void readThermistor() {
 
 */
 void writeSD(HeatingState heatingState) {
-  File myFile = SD.open("Js5_03_m.TXT", FILE_WRITE);
+  File myFile = SD.open("SFtest.TXT", FILE_WRITE);
 
   String outString(getTimestamp());
   outString += String(", ");
@@ -271,7 +274,7 @@ void writeSD(HeatingState heatingState) {
 
 */
 void writeTextSD(String message) {
-  File myFile = SD.open("Js5_03_m.TXT", FILE_WRITE);
+  File myFile = SD.open("SFtest.TXT", FILE_WRITE);
 
   String outString = String("M-") + getTimestamp() + "-" + message;
   myFile.println(outString);
@@ -280,7 +283,7 @@ void writeTextSD(String message) {
 /*
 */
 void writeHeaderSD() {
-  File myFile = SD.open("Js5_03_m.TXT", FILE_WRITE);
+  File myFile = SD.open("SFtest.TXT", FILE_WRITE);
   myFile.printf("M- Starting Event on Device %s\n", DEVICE_NAME);
   
   String datetime = getTimestamp();
@@ -333,7 +336,7 @@ void checkForDumpCommand()
 
 void dumpSdToSerial()
 {
-  File myFile = SD.open("Js5_03_m.TXT", FILE_READ);
+  File myFile = SD.open("SFtest.TXT", FILE_READ);
 
   Serial.print("myFile position() = ");
   Serial.println(myFile.position());
@@ -367,12 +370,18 @@ void dumpSdToSerial()
 void heaterOn() {
   pinMode(HEATER_PIN, OUTPUT);
   digitalWrite(HEATER_PIN, HIGH);
+
+  digitalWrite(YELLOW_LED, HIGH);
+  digitalWrite(GREEN_LED, LOW);
 }
 /*
 */
 void heaterOFF() {
   pinMode(HEATER_PIN, OUTPUT);
   digitalWrite(HEATER_PIN, LOW);
+  
+  digitalWrite(YELLOW_LED, LOW);
+  digitalWrite(GREEN_LED, HIGH);
 }
 /*
 */

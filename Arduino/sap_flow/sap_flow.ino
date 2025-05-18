@@ -122,12 +122,12 @@ What is the purpose of fireAlarm2()?
 #include <Adafruit_ADS1X15.h>
 /// T is the period between measurement events
 #define T_HRS 0
-#define T_MINS 3
+#define T_MINS 2
 #define T_SECS 0
 /// PREH is the measurement period before heat on
 #define PREH_HRS 0
 #define PREH_MINS 0
-#define PREH_SECS 20
+#define PREH_SECS 10
 /// H is the period to apply heat
 #define H_HRS 0
 #define H_MINS 0
@@ -135,7 +135,7 @@ What is the purpose of fireAlarm2()?
 /// POTSTH is the measurement period after heat
 #define POSTH_HRS 0
 #define POSTH_MINS 0
-#define POSTH_SECS 100
+#define POSTH_SECS 10
 /// TS is the read data period between measuements. The shortest cycle
 #define TS_HRS 0
 #define TS_MINS 0
@@ -150,7 +150,7 @@ What is the purpose of fireAlarm2()?
 //         PREH   H       POSTH
 //.......|............................T....................|....................
 /// note: T > PREH + H + POSTH > TS
-#define DEVICE_NAME "Js5_03_m"
+#define DEVICE_NAME "SFtest"
 // states (periods) in cycle
 enum class HeatingState
 {
@@ -163,6 +163,7 @@ enum class HeatingState
 #define HEATER_PIN 6
 
 // A battery voltage of 0.9V per cell is a commonly cited cutoff voltage for NiMH cells
+#define ENABLE_VOLTAGE_CUTOFF (0)
 #define VOLTAGE_CUTOFF (0.9 * 8)
 
 RTC_DS3231 rtc_ds3231;
@@ -170,11 +171,48 @@ Adafruit_ADS1115 ads1, ads2;
 bool ledToggle = true;
 float tempC1, tempC2, tempC3, tempC4, tempC5, tempC6, tempC7, tempC8;
 
+// The red LED at the top of the shares a pin with the on-board red LED
+#define RED_LED 13
+#define YELLOW_LED 12
+#define GREEN_LED 11
+#define POWER_LED 10
+#define TIMER_LED 9
+#define ERROR_LED 5
+
+
 /*
 */
 void setup() {
   Serial.begin(9600); // Baud rate ignored on this platform
-  delay(6000);
+
+  // Turn on all LEDs for 1 second on power up
+  pinMode(RED_LED, OUTPUT);
+  pinMode(YELLOW_LED, OUTPUT);
+  pinMode(GREEN_LED, OUTPUT);
+  pinMode(POWER_LED, OUTPUT);
+  pinMode(TIMER_LED, OUTPUT);
+  pinMode(ERROR_LED, OUTPUT);
+  digitalWrite(RED_LED, 1);
+  digitalWrite(YELLOW_LED, 1);
+  digitalWrite(GREEN_LED, 1);
+  digitalWrite(POWER_LED, 1);
+  digitalWrite(TIMER_LED, 1);
+  digitalWrite(ERROR_LED, 1);
+  delay(1000);
+
+  digitalWrite(RED_LED, 0);
+  digitalWrite(YELLOW_LED, 0);
+  digitalWrite(GREEN_LED, 0);
+  // Leave power LED on
+  digitalWrite(TIMER_LED, 0);
+  digitalWrite(ERROR_LED, 0);
+  delay(1000);
+
+  digitalWrite(POWER_LED, 1);
+  delay(4000);
+
+
+
   Serial.println(__FILE__);
 
   pinMode(LED_BUILTIN, OUTPUT);
@@ -215,6 +253,7 @@ void setup() {
 
   writeHeaderSD();
 
+#if ENABLE_VOLTAGE_CUTOFF
   float voltage = measureVoltage();
   if (voltage < VOLTAGE_CUTOFF)
   {
@@ -232,6 +271,7 @@ void setup() {
     putToSleep(rtc_ds3231.now() + TimeSpan(0, T_HRS, T_MINS, T_SECS));
   }
   else
+#endif
   {
     sleepOrMeasure();
   }
@@ -407,8 +447,11 @@ void measureSetNextT() {
 
     // Toggle the LED, but don't delay 1 second. Instead poll the RTC time until we reach the next second.
     toggleLedDelay(0);
+    digitalWrite(TIMER_LED, !digitalRead(TIMER_LED));
     waitForNextSecond();
   }  // end while(true)
+
+  digitalWrite(GREEN_LED, LOW);
 
   DateTime wakeTime = startTime + TimeSpan(0, T_HRS, T_MINS, T_SECS);
 
