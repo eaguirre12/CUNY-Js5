@@ -37,6 +37,8 @@ The power LED turns on while the sensor has power.
 
 The timer LED slowly flashes while the sensor counting out seconds during the measurement cycle.
 
+If the RTC has not been set, the timer LED will turn on solid while waiting for the time over Serial.
+
 
 ## Error LED
 

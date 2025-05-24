@@ -185,6 +185,11 @@ float tempC1, tempC2, tempC3, tempC4, tempC5, tempC6, tempC7, tempC8;
 void setup() {
   Serial.begin(9600); // Baud rate ignored on this platform
 
+  // Make sure to drive the heater pin low immediately.
+  // Otherwise the gate may float up and turn on the heater!
+  pinMode(HEATER_PIN, OUTPUT);
+  digitalWrite(HEATER_PIN, LOW);
+
   // Turn on all LEDs for 1 second on power up
   pinMode(RED_LED, OUTPUT);
   pinMode(YELLOW_LED, OUTPUT);
@@ -243,9 +248,11 @@ void setup() {
   Serial.println(" current RTC date/time");
   //RTC adjust
   if (rtc_ds3231.lostPower()) {
+    digitalWrite(TIMER_LED, 1);
     DateTime dt = inputDateTime();
     if (dt.isValid())
       rtc_ds3231.adjust(dt);
+    digitalWrite(TIMER_LED, 0);
   }
 
   // If the user requested an SD dump, do so
