@@ -415,3 +415,14 @@ So the heater current will be 275 mA
         At 12-bit resolution with 3.3V full scale, we should read a raw value of about 34.
         That's... less than I would hope for, but certainly enough to detect an unusual current.
 
+
+## 2025-05-28
+
+
+I miscalculated the settling time for the ADC
+    With 1 nF cap, it's 5 us, not 5 ms!
+    I've changed the schematic to 100 nF
+    The ADS1100 clock is nominally 275 kHz. So my actual antialiasing filter cutoff of 200 kHz is too high!
+    I added 100nF on top and the values seem slightly less noisy, but I could be imagining it. 
+    The values are holding steady +/- 1, before it was like +/- 2.
+    1 is 0.3 mV, so this is pretty negligible either way

@@ -6102,7 +6102,7 @@
 		)
 		(uuid "92b0f860-8396-4fa5-8983-8e37619a5688")
 	)
-	(text "tau = (10k || 10k) * 1n = 5 ms\nf_c = 1/tau = 200 Hz\nSettling time like 15 ms.\nAll 6 channels, we spend 90 ms\nper second waiting for settling - OK"
+	(text "tau = (10k || 10k) * 100n = 0.5 ms\nf_c = 1/tau = 2 kHz\nSettling time like 1.5 ms.\nAll 6 channels, we spend 9 ms\nper second waiting for settling - OK"
 		(exclude_from_sim no)
 		(at 203.962 163.068 0)
 		(effects
@@ -9105,7 +9105,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1n"
+		(property "Value" "100n"
 			(at 191.77 147.3262 0)
 			(effects
 				(font
@@ -9141,7 +9141,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C46653"
+		(property "LCSC" "C49678"
 			(at 189.23 146.05 0)
 			(effects
 				(font
@@ -10828,7 +10828,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1n"
+		(property "Value" "100n"
 			(at 201.93 147.3262 0)
 			(effects
 				(font
@@ -10864,7 +10864,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C46653"
+		(property "LCSC" "C49678"
 			(at 199.39 146.05 0)
 			(effects
 				(font
@@ -13256,7 +13256,7 @@
 		(dnp no)
 		(uuid "d8260833-ffe2-4399-bda3-b445058965f9")
 		(property "Reference" "A1"
-			(at 123.19 172.72 0)
+			(at 106.68 177.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)

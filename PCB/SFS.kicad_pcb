@@ -406,7 +406,7 @@
 		(descr "Resistor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor handsolder")
 		(property "Reference" "R20"
-			(at 3.81 0 360)
+			(at 3.81 0 0)
 			(layer "F.SilkS")
 			(uuid "15a94b9f-8b52-4da8-b4ee-1ffba4fe6161")
 			(effects
@@ -417,7 +417,7 @@
 			)
 		)
 		(property "Value" "100k"
-			(at 0 1.65 360)
+			(at 0 1.65 0)
 			(layer "F.Fab")
 			(uuid "a360b30f-5b79-4520-9004-213bba86dfaf")
 			(effects
@@ -582,7 +582,7 @@
 			(uuid "8c938dc5-d64c-47d5-a669-c570beebe252")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "05dd9bc0-da9d-4bdf-821b-2adf60cea08a")
 			(effects
@@ -16661,7 +16661,7 @@
 			(justify left)
 		)
 	)
-	(gr_text "NGENS ASRC CUNY \nSap Flow Sensor\nVer. 3.0"
+	(gr_text "NGENS ASRC CUNY \nSap Flow Sensor\nVer. 3.1"
 		(at 80.01 55.245 0)
 		(layer "F.SilkS")
 		(uuid "ec34e990-79ba-4027-999e-f1b8092b91ca")

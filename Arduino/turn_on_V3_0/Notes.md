@@ -69,3 +69,19 @@ Turn-on checklist
     SD card
         Write to file
         Read back file and dump to serial
+
+
+
+The ADC was super noisy, sometimes going haywire.
+    Answer: a bad jumper wire!
+
+
+I miscalculated the settling time for the ADC
+    With 1 nF cap, it's 5 us, not 5 ms!
+    I've changed the schematic to 100 nF
+    The ADS1100 clock is nominally 275 kHz. So my actual antialiasing filter cutoff of 200 kHz is too high!
+    I added 100nF on top and the values seem slightly less noisy, but I could be imagining it. 
+    The values are holding steady +/- 1, before it was like +/- 2.
+    1 is 0.3 mV, so this is pretty negligible either way
+
+
