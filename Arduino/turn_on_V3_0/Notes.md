@@ -49,3 +49,23 @@ I'm reading "373" for the battery voltage
     Is the reference 3.3V?
     Yes and yes
     Reading 13.2V
+
+
+
+Turn-on checklist
+    LEDs
+    Keep-on pin
+    Neopixel
+    RTC
+        Setting time
+        Wake up with alarm
+    ADC
+        First measurement
+        Mux
+        Verify settling time
+    Heater
+        Turn on
+        Measure current
+    SD card
+        Write to file
+        Read back file and dump to serial

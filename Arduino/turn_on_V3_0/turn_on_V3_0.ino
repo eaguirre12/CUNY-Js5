@@ -1,4 +1,5 @@
 
+#include <Adafruit_NeoPixel.h>
 
 
 #define LED_R 10
@@ -21,6 +22,8 @@
 #endif
 
 
+Adafruit_NeoPixel pixel(1, PIN_NEOPIXEL);
+
 
 void setup() {
 
@@ -40,6 +43,10 @@ void setup() {
 
   Serial.begin(9600); // Value ignored
   
+
+  pixel.begin();
+  pixel.clear();
+  pixel.show();
 
 }
 
@@ -83,6 +90,18 @@ void loop() {
   delay(500);
   digitalWrite(LED_ERROR, 0);
   delay(500);
+
+  pixel.setPixelColor(0, pixel.Color(16, 0, 0));
+  pixel.show();
+  delay(1000);
+  pixel.setPixelColor(0, pixel.Color(0, 16, 0));
+  pixel.show();
+  delay(1000);
+  pixel.setPixelColor(0, pixel.Color(0, 0, 16));
+  pixel.show();
+  delay(1000);
+  pixel.clear();
+  pixel.show();
 
   // Turn itself off
   digitalWrite(KEEP_ON, 0);
