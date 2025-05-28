@@ -382,3 +382,36 @@ Could I use the built-in ADC instead of external?
         Some of the pins that aren't labeled as analog on the uC board do in fact support analog.
     It supports differential measurements
         The datasheet says the negative input must be connected to ground. Well then what's the point of a differential measurement? Or did they mean for single-ended it must be connected to ground?
+
+
+## 2025-05-24
+
+I measured the resistance of the East 30 heater
+    43.4 Ohms
+
+We're using a 10-cell NiMH pack
+    12V nominal
+
+
+So the heater current will be 275 mA
+    3.3 W
+    That's ignoring
+        Cell resistance
+            https://budgetlightforum.com/t/naximum-acceptable-internal-resistance-values/43456/2
+            This page says 50-100 mOhm per cell, so 0.5 to 1 Ohm total
+        NFET on resistance
+            About 25 mOhm
+        Current sense resistor
+            0.1 Ohm
+        Wire resistance
+            The battery lead is 26 AWG, 133 mOhm/meter, probably 17 mOhm, x2 = 34 mOhm
+            Not sure about the sensor. Maybe 1 meter of 24 AWG? That would be 170 mOhm
+        Trace resistance
+            Should be negligible
+        So the total non-heater resistance is 0.829 - 1.329
+        That's efficiency of 98 - 97%
+    With the rest of the resistances, that's 268 mA
+    With the 0.1 Ohm current sense resistor, we'll read about 27 mV
+        At 12-bit resolution with 3.3V full scale, we should read a raw value of about 34.
+        That's... less than I would hope for, but certainly enough to detect an unusual current.
+
