@@ -59,13 +59,13 @@ Turn-on checklist
     RTC - done
         Setting time - done
         Wake up with alarm - done
-    ADC
-        First measurement
-        Mux
-        Verify settling time
-    Heater
-        Turn on
-        Measure current
+    ADC - done
+        First measurement - done
+        Mux - done
+        Verify settling time - off-by-1 error (1 SI prefix!)
+    Heater - done
+        Turn on - done
+        Measure current - doesn't work very well
     SD card
         Write to file
         Read back file and dump to serial
@@ -85,3 +85,6 @@ I miscalculated the settling time for the ADC
     1 is 0.3 mV, so this is pretty negligible either way
 
 
+The current sense resistor is too small to get a good read on an LED.
+    It doesn't even work all that well with a 75 Ohm resistor
+    I should use 1 Ohm instead. Schematic changed.

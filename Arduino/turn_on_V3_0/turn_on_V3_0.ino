@@ -12,18 +12,25 @@
 #define LED_ERROR 9
 
 #define V_BAT_SENSE A0
-
+#define HEATER_SENSE A1
 
 // TX pin is different between these two boards
 #ifdef ARDUINO_ADAFRUIT_FEATHER_RP2040_ADALOGGER
   #define KEEP_ON D0
-#define MUX_S0 14
-#define MUX_S1 15
-#define MUX_S2 8
+  #define HEAT D1
+
+  #define MUX_S0 14
+  #define MUX_S1 15
+  #define MUX_S2 8
 #endif
 
 #ifdef ARDUINO_ADAFRUIT_FEATHER_M0_ADALOGGER
-  #define KEEP_ON D1
+  #define KEEP_ON D1 // Untested
+  #define HEAT D0 // Untested
+
+  #define MUX_S0 11 // Untested
+  #define MUX_S1 10 // Untested
+  #define MUX_S2 12 // Untested
 #endif
 
 
@@ -109,6 +116,36 @@ int16_t read_adc(int mux_channel, int settle_delay)
 
 
 
+float analogReadAverage(int pin, int n)
+{
+  uint32_t result = 0;
+  for (int i = 0; i < n; ++i)
+  {
+    result += analogRead(pin);
+  }
+  return result / (float)n;
+}
+
+
+int analogRange;
+
+float readBatteryVoltage()
+{
+  float vbat = analogReadAverage(V_BAT_SENSE, 16);
+  vbat /= analogRange;
+  vbat *= 3.3;
+  vbat /= (10.0 / 110.0);
+  return vbat;
+}
+
+float readHeaterCurrent()
+{
+  float heater_sense = analogReadAverage(HEATER_SENSE, 16);
+  float current_mA = heater_sense / 4095.0 * 3.3 / 0.1 * 1000.0;
+  return current_mA;
+}
+
+
 
 Adafruit_NeoPixel pixel(1, PIN_NEOPIXEL);
 RTC_DS3231 rtc;
@@ -119,6 +156,8 @@ void setup() {
   pinMode(KEEP_ON, OUTPUT);
   digitalWrite(KEEP_ON, 1);
 
+  pinMode(HEAT, OUTPUT);
+  digitalWrite(HEAT, 0);
 
 
   pinMode(LED_R, OUTPUT);
@@ -147,16 +186,21 @@ void setup() {
 
   setup_adc();
 
+
+  analogReadResolution(12);
+  analogRange = 1 << 12;
+
 }
 
 void loop() {
   // Keep itself on once it starts the loop
   digitalWrite(KEEP_ON, 1);
+  // Delay after enabling KEEP_ON is necessary, or our battery voltage reading is low.
+  // Don't know why yet.
+  delay(1);
 
-  float vbat = analogRead(V_BAT_SENSE);
-  vbat = vbat / 1023 * 3.3 / (10.0 / 110);
   Serial.print("Battery voltage: ");
-  Serial.println(vbat);
+  Serial.println(readBatteryVoltage());
 
   digitalWrite(LED_R, 1);
   delay(500);
@@ -238,13 +282,39 @@ void loop() {
     Serial.println("Couldn't find RTC");
   }
 
+
+
+  Serial.print("Heater current while off: ");
+  Serial.print(readHeaterCurrent());
+  Serial.println(" mA");
+
+  int heatSeconds = 5;
+  Serial.print("Turning heater on for ");
+  Serial.print(heatSeconds);
+  Serial.println(" seconds");
+  digitalWrite(HEAT, 1);
+  delay(heatSeconds * 1000);
+  float heaterCurrent = readHeaterCurrent();
+  float batteryVoltage = readBatteryVoltage();
+  digitalWrite(HEAT, 0);
+  Serial.println("Heater off");
+  Serial.print("Heater current: ");
+  Serial.print(heaterCurrent);
+  Serial.println(" mA");
+  Serial.print("Battery voltage while heater is on: ");
+  Serial.println(batteryVoltage);
+  delay(1);
+
+
+  Serial.print("Internal temp: ");
+  Serial.print(analogReadTemp());
+  Serial.println(" C");
+
   // Turn itself off
   digitalWrite(KEEP_ON, 0);
   delay(1000);
 
 }
-
-
 
 
 
