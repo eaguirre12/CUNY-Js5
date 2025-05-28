@@ -1,5 +1,6 @@
 
 #include <Adafruit_NeoPixel.h>
+#include <RTClib.h>
 
 
 #define LED_R 10
@@ -23,6 +24,7 @@
 
 
 Adafruit_NeoPixel pixel(1, PIN_NEOPIXEL);
+RTC_DS3231 rtc;
 
 
 void setup() {
@@ -102,6 +104,38 @@ void loop() {
   delay(1000);
   pixel.clear();
   pixel.show();
+
+  
+
+
+  if (rtc.begin())
+  {
+    Serial.println("Found RTC");
+
+    if (rtc.lostPower())
+    {
+      Serial.println("RTC lost power");
+      rtc.adjust(DateTime(2025, 5, 28, 14, 15, 0));
+    }
+
+    char datetime[32] = "YYYY-MM-DD hh:mm:ss";
+    rtc.now().toString(datetime);
+
+    Serial.print("Current time: ");
+    Serial.println(datetime);
+
+    rtc.disable32K();
+    rtc.writeSqwPinMode(DS3231_OFF);
+
+    rtc.clearAlarm(1);
+    rtc.clearAlarm(2);
+
+    rtc.setAlarm1(DateTime(0, 0, 0, 0, 0, 0), DS3231_A1_Second);
+  }
+  else
+  {
+    Serial.println("Couldn't find RTC");
+  }
 
   // Turn itself off
   digitalWrite(KEEP_ON, 0);

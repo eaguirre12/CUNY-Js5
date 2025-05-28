@@ -53,12 +53,12 @@ I'm reading "373" for the battery voltage
 
 
 Turn-on checklist
-    LEDs
-    Keep-on pin
-    Neopixel
-    RTC
-        Setting time
-        Wake up with alarm
+    LEDs - done
+    Keep-on pin - done
+    Neopixel - done
+    RTC - done
+        Setting time - done
+        Wake up with alarm - done
     ADC
         First measurement
         Mux
