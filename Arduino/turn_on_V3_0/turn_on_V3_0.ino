@@ -140,8 +140,9 @@ float readBatteryVoltage()
 
 float readHeaterCurrent()
 {
+  float sense_resistor = 20; // Bodged on 20 Ohm in place of 0.1. Next version will have 1 Ohm.
   float heater_sense = analogReadAverage(HEATER_SENSE, 16);
-  float current_mA = heater_sense / 4095.0 * 3.3 / 0.1 * 1000.0;
+  float current_mA = heater_sense / 4095.0 * 3.3 / sense_resistor * 1000.0;
   return current_mA;
 }
 
