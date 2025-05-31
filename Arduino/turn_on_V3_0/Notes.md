@@ -36,7 +36,7 @@ I've noticed that when I power from the battery, it makes a whine
 
 Keep-on
     Not working
-    Turns out the RP2040 Adalogger has a different
+    Turns out the RP2040 Adalogger has a different pinout!
 
 
 
@@ -88,3 +88,38 @@ I miscalculated the settling time for the ADC
 The current sense resistor is too small to get a good read on an LED.
     It doesn't even work all that well with a 75 Ohm resistor
     I should use 1 Ohm instead. Schematic changed.
+
+
+## 2025-05-31
+
+What's left to turn on?
+    SD card
+    Button
+    Calculate voltage/current of the heater NFET
+
+
+Heater NFET calculations
+    If the current is 275 mA, then voltage drop across the sense resistor will be 275 mV
+    That means V_GS = 3.3 - 0.275 = 3.025
+    R_ON = 48 mOhm max with V_GS = 2.5V
+    P = 275mA ^2 * 48 mOhm = 4 mW
+
+
+Should I power the Adalogger through the USB pin instead?
+    The risk is back-feeding power to USB
+    I could use a 5V regulator on board, with a diode to the USB pin. That would prevent the USB feeding the battery side of the circuit when no battery is attached. And it would drop the voltage slightly.
+    Eh, I think I'll stick with what I have. It seems to be working.
+
+
+
+What changes to make?
+    Increase sense resistor (done)
+    Change antialiasing filter cap (done)
+    Increase resistor for yellow and green LEDs (done)
+    Add reverse polarity protection (done)
+    Add a heater LED (done)
+
+
+Heater LED
+    With forward voltage of 1.8V, the existing red LEDs from 3.3V have 0.5 mA current
+    Running from 12V, we want 22k

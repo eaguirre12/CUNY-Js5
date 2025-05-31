@@ -198,7 +198,7 @@ void loop() {
   digitalWrite(KEEP_ON, 1);
   // Delay after enabling KEEP_ON is necessary, or our battery voltage reading is low.
   // Don't know why yet.
-  delay(1);
+  delay(10);
 
   Serial.print("Battery voltage: ");
   Serial.println(readBatteryVoltage());
@@ -314,6 +314,15 @@ void loop() {
   // Turn itself off
   digitalWrite(KEEP_ON, 0);
   delay(1000);
+
+  // Wait for alarm
+  Serial.print("Waiting for alarm");
+  while (!rtc.alarmFired(1))
+  {
+    delay(1000);
+    Serial.print(".");
+  }
+  Serial.println();
 
 }
 
