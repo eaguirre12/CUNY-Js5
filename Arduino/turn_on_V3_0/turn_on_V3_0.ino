@@ -1,6 +1,9 @@
 
-#include <Adafruit_NeoPixel.h>
 #include <RTClib.h>
+
+#ifdef ARDUINO_ADAFRUIT_FEATHER_RP2040_ADALOGGER
+#include <Adafruit_NeoPixel.h>
+#endif
 
 
 #define LED_R 10
@@ -24,17 +27,18 @@
   #define MUX_S2 8
 #endif
 
-#ifdef ARDUINO_ADAFRUIT_FEATHER_M0_ADALOGGER
-  #define KEEP_ON D1 // Untested
-  #define HEAT D0 // Untested
+#ifdef ADAFRUIT_FEATHER_M0
+  #define KEEP_ON 1
+  #define HEAT 0
 
-  #define MUX_S0 11 // Untested
-  #define MUX_S1 10 // Untested
-  #define MUX_S2 12 // Untested
+  #define MUX_S0 SCK
+  #define MUX_S1 MOSI
+  #define MUX_S2 MISO
 #endif
 
 
-#define ADC_ADDRESS 0b1001'000
+// #define ADC_ADDRESS 0b1001'000
+#define ADC_ADDRESS 0x48
 Adafruit_I2CDevice adc_i2c(ADC_ADDRESS, &Wire);
 
 bool setup_adc()
@@ -147,9 +151,11 @@ float readHeaterCurrent()
 }
 
 
-
-Adafruit_NeoPixel pixel(1, PIN_NEOPIXEL);
 RTC_DS3231 rtc;
+
+#ifdef ARDUINO_ADAFRUIT_FEATHER_RP2040_ADALOGGER
+Adafruit_NeoPixel pixel(1, PIN_NEOPIXEL);
+#endif
 
 
 void setup() {
@@ -181,9 +187,11 @@ void setup() {
   Serial.begin(9600); // Value ignored
   
 
+#ifdef ARDUINO_ADAFRUIT_FEATHER_RP2040_ADALOGGER
   pixel.begin();
   pixel.clear();
   pixel.show();
+#endif
 
   setup_adc();
 
@@ -232,6 +240,7 @@ void loop() {
   digitalWrite(LED_ERROR, 0);
   delay(500);
 
+#ifdef ARDUINO_ADAFRUIT_FEATHER_RP2040_ADALOGGER
   pixel.setPixelColor(0, pixel.Color(16, 0, 0));
   pixel.show();
   delay(1000);
@@ -243,6 +252,7 @@ void loop() {
   delay(1000);
   pixel.clear();
   pixel.show();
+#endif
 
 
 
@@ -307,9 +317,11 @@ void loop() {
   delay(1);
 
 
+#ifdef ARDUINO_ADAFRUIT_FEATHER_RP2040_ADALOGGER
   Serial.print("Internal temp: ");
   Serial.print(analogReadTemp());
   Serial.println(" C");
+#endif
 
   // Turn itself off
   digitalWrite(KEEP_ON, 0);
