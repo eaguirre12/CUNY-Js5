@@ -2,18 +2,6 @@
 #include <RTClib.h>
 #include <SD.h>
 
-#ifdef ARDUINO_ADAFRUIT_FEATHER_RP2040_ADALOGGER
-#include <Adafruit_NeoPixel.h>
-#endif
-
-
-#define LED_R 10
-#define LED_Y 11
-#define LED_G 12
-#define LED_FEATHER 13
-#define LED_POWER 5
-#define LED_TIMER 6
-#define LED_ERROR 9
 
 #define V_BAT_SENSE A0
 #define HEATER_SENSE A1
@@ -217,10 +205,6 @@ float readHeaterCurrent()
 
 RTC_DS3231 rtc;
 
-#ifdef ARDUINO_ADAFRUIT_FEATHER_RP2040_ADALOGGER
-Adafruit_NeoPixel pixel(1, PIN_NEOPIXEL);
-#endif
-
 
 
 int id = 0;
@@ -273,14 +257,7 @@ void setup() {
   pinMode(HEAT, OUTPUT);
   digitalWrite(HEAT, 0);
 
-
-  pinMode(LED_R, OUTPUT);
-  pinMode(LED_Y, OUTPUT);
-  pinMode(LED_G, OUTPUT);
-  pinMode(LED_FEATHER, OUTPUT);
-  pinMode(LED_POWER, OUTPUT);
-  pinMode(LED_TIMER, OUTPUT);
-  pinMode(LED_ERROR, OUTPUT);
+  setupLeds();
 
   
   pinMode(MUX_S0, OUTPUT);
@@ -293,12 +270,6 @@ void setup() {
 
   Serial.begin(9600); // Value ignored
   
-
-#ifdef ARDUINO_ADAFRUIT_FEATHER_RP2040_ADALOGGER
-  pixel.begin();
-  pixel.clear();
-  pixel.show();
-#endif
 
   setup_adc();
 
@@ -323,49 +294,39 @@ void loop() {
   Serial.print("Battery voltage: ");
   Serial.println(readBatteryVoltage());
 
-  digitalWrite(LED_R, 1);
+  setRedLed(1);
   delay(500);
-  digitalWrite(LED_R, 0);
+  setRedLed(0);
   delay(500);
-  digitalWrite(LED_Y, 1);
+  setYellowLed(1);
   delay(500);
-  digitalWrite(LED_Y, 0);
+  setYellowLed(0);
   delay(500);
-  digitalWrite(LED_G, 1);
+  setGreenLed(1);
   delay(500);
-  digitalWrite(LED_G, 0);
+  setGreenLed(0);
   delay(500);
-  digitalWrite(LED_FEATHER, 1);
+  setFeatherLed(1);
   delay(500);
-  digitalWrite(LED_FEATHER, 0);
+  setFeatherLed(0);
   delay(500);
-  digitalWrite(LED_POWER, 1);
+  setPowerLed(1);
   delay(500);
-  digitalWrite(LED_POWER, 0);
+  setPowerLed(0);
   delay(500);
-  digitalWrite(LED_TIMER, 1);
+  setTimerLed(1);
   delay(500);
-  digitalWrite(LED_TIMER, 0);
+  setTimerLed(0);
   delay(500);
-  digitalWrite(LED_ERROR, 1);
+  setErrorLed(1);
   delay(500);
-  digitalWrite(LED_ERROR, 0);
+  setErrorLed(0);
   delay(500);
 
-#ifdef ARDUINO_ADAFRUIT_FEATHER_RP2040_ADALOGGER
-  pixel.setPixelColor(0, pixel.Color(16, 0, 0));
-  pixel.show();
-  delay(1000);
-  pixel.setPixelColor(0, pixel.Color(0, 16, 0));
-  pixel.show();
-  delay(1000);
-  pixel.setPixelColor(0, pixel.Color(0, 0, 16));
-  pixel.show();
-  delay(1000);
-  pixel.clear();
-  pixel.show();
-#endif
-
+  setFeatherGreenLed(1);
+  delay(500);
+  setFeatherGreenLed(0);
+  delay(500);
 
 
   Serial.println("Thermistors: ");
