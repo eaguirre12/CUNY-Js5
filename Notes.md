@@ -426,3 +426,13 @@ I miscalculated the settling time for the ADC
     I added 100nF on top and the values seem slightly less noisy, but I could be imagining it. 
     The values are holding steady +/- 1, before it was like +/- 2.
     1 is 0.3 mV, so this is pretty negligible either way
+
+
+## 2025-05-31
+
+
+Could I add a bunch of solder jumpers to set the logger number?
+    I have 3 ADC pins free. If I had a 10-voltage divider, that could be used for a 3-digit number.
+    Soldering 3 solder jumpers during assembly wouldn't be much work. Comparable to updating the number in the code when uploading. And much more permanent.
+    I added it to the schematic
+    I'll bodge it with the current 3.0 version

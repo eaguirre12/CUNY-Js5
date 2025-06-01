@@ -216,6 +216,10 @@
         {
           "diameter": 0.0,
           "drill": 0.0
+        },
+        {
+          "diameter": 0.4064,
+          "drill": 0.3048
         }
       ],
       "zones_allow_external_fillets": false
@@ -614,6 +618,10 @@
     [
       "3517b18a-50fb-4c6e-bddd-955d55f67cd1",
       "Root"
+    ],
+    [
+      "93660e3a-d03c-40a1-8aed-788982d06b4c",
+      "ID"
     ]
   ],
   "text_variables": {}

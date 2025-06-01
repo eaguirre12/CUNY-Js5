@@ -123,3 +123,42 @@ What changes to make?
 Heater LED
     With forward voltage of 1.8V, the existing red LEDs from 3.3V have 0.5 mA current
     Running from 12V, we want 22k
+
+
+
+I should test this with the M0 Adalogger
+    Needed a few changes, but it works
+
+
+The Aux switch is working
+
+
+
+Could I add a bunch of solder jumpers to set the logger number?
+    I have 3 ADC pins free. If I had a 10-voltage divider, that could be used for a 3-digit number.
+    Soldering 3 solder jumpers during assembly wouldn't be much work. Comparable to updating the number in the code when uploading. And much more permanent.
+
+
+## 2025-06-01
+
+Bodging the 3.0 version to work with the ID
+    900
+        A3 to 3.3
+        A4 to GND
+        A5 to GND
+    990
+        A3 to 3.3
+        A4 to 3.3
+        A5 to GND
+    999
+        A3 to 3.3
+        A4 to 3.3
+        A5 to 3.3
+
+
+I also replaced the 20 Ohm sense resistor with 1 Ohm on 900, 990, and 999
+
+
+Ah, here's a problem. The RP2040 only has 4 analog pins!
+    I can free up one analog pin used by the button. The RP2040 has an extra 
+

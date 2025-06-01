@@ -1,5 +1,6 @@
 
 #include <RTClib.h>
+#include <SD.h>
 
 #ifdef ARDUINO_ADAFRUIT_FEATHER_RP2040_ADALOGGER
 #include <Adafruit_NeoPixel.h>
@@ -16,6 +17,8 @@
 
 #define V_BAT_SENSE A0
 #define HEATER_SENSE A1
+#define SW_AUX A2
+
 
 // TX pin is different between these two boards
 #ifdef ARDUINO_ADAFRUIT_FEATHER_RP2040_ADALOGGER
@@ -25,6 +28,12 @@
   #define MUX_S0 14
   #define MUX_S1 15
   #define MUX_S2 8
+  
+  #define SD_CS 23
+  #define SD_CLK 18
+  #define SD_MOSI 19
+  #define SD_MISO 20
+  #define SD_CARD_DETECT 16
 #endif
 
 #ifdef ADAFRUIT_FEATHER_M0
@@ -34,8 +43,57 @@
   #define MUX_S0 SCK
   #define MUX_S1 MOSI
   #define MUX_S2 MISO
+  
+  #define SD_CS 4
+  #define SD_CARD_DETECT 7
+  
+  #define ID_0 A5
+  #define ID_1 A4
+  #define ID_2 A3
 #endif
 
+
+bool setupSD()
+{
+  if (digitalRead(SD_CARD_DETECT))
+  {
+    Serial.println("SD card inserted");
+  }
+  else
+  {
+    Serial.println("SD card not inserted");
+  }
+#ifdef ARDUINO_ADAFRUIT_FEATHER_RP2040_ADALOGGER
+  auto result = SD.begin(SD_CS, SPI1);
+#endif
+#ifdef ADAFRUIT_FEATHER_M0
+  auto result = SD.begin(SD_CS);
+#endif
+
+  if (!result)
+  {
+    Serial.println("SD card not started");
+    return false;
+  }
+  else
+  {
+    Serial.println("SD card started");
+    return true;
+  }
+}
+
+void appendToSD(const char* str, int id)
+{
+  char filename[] = "testNNN.txt";
+  filename[4] = '0' + (id / 100) % 10;
+  filename[5] = '0' + (id / 10) % 10;
+  filename[6] = '0' + id % 10;
+  Serial.printf("filename: %s\n", filename);
+
+  File f = SD.open(filename, FILE_WRITE);
+  f.println(str);
+  f.close();
+}
 
 // #define ADC_ADDRESS 0b1001'000
 #define ADC_ADDRESS 0x48
@@ -131,7 +189,7 @@ float analogReadAverage(int pin, int n)
 }
 
 
-int analogRange;
+int analogRange = 1 << 10;
 
 float readBatteryVoltage()
 {
@@ -144,11 +202,12 @@ float readBatteryVoltage()
 
 float readHeaterCurrent()
 {
-  float sense_resistor = 20; // Bodged on 20 Ohm in place of 0.1. Next version will have 1 Ohm.
+  float sense_resistor = 1;
   float heater_sense = analogReadAverage(HEATER_SENSE, 16);
   float current_mA = heater_sense / 4095.0 * 3.3 / sense_resistor * 1000.0;
   return current_mA;
 }
+
 
 
 RTC_DS3231 rtc;
@@ -156,6 +215,49 @@ RTC_DS3231 rtc;
 #ifdef ARDUINO_ADAFRUIT_FEATHER_RP2040_ADALOGGER
 Adafruit_NeoPixel pixel(1, PIN_NEOPIXEL);
 #endif
+
+
+
+int id = 0;
+
+int analogToDigit(int pin)
+{
+  pinMode(pin, INPUT);
+  auto val = analogRead(pin);
+  float increment = analogRange / 10.0;
+  float grayArea = analogRange / 80.0;
+  for (int i = 0; i <= 9; ++i)
+  {
+    float threshold = (i + 1) * increment;
+    float lowerGrayArea = i * increment + grayArea;
+    float upperGrayArea = threshold - grayArea;
+    if (val < threshold)
+    {
+      if (i > 0 && val < lowerGrayArea)
+      {
+        Serial.printf("Warning: ID pin %i is in the lower gray area. ", pin);
+        Serial.printf("val = %i, threshold = %i, lowerGrayArea = %i\n", val, (int)threshold, (int)lowerGrayArea);
+      }
+      if (i < 9 && val > upperGrayArea)
+      {
+        Serial.printf("Warning: ID pin %i is in the upper gray area. ", pin);
+        Serial.printf("val = %i, threshold = %i, upperGrayArea = %i\n", val, (int)threshold, (int)upperGrayArea);
+      }
+      return i;
+    }
+  }
+  return 9;
+}
+
+void readId()
+{
+  id = 0;
+  id += analogToDigit(ID_0);
+  id += analogToDigit(ID_1) * 10;
+  id += analogToDigit(ID_2) * 100;
+  Serial.print("Read ID as ");
+  Serial.println(id);
+}
 
 
 void setup() {
@@ -199,6 +301,11 @@ void setup() {
   analogReadResolution(12);
   analogRange = 1 << 12;
 
+  pinMode(SW_AUX, INPUT_PULLUP);
+
+  pinMode(SD_CARD_DETECT, INPUT_PULLUP);
+
+  readId();
 }
 
 void loop() {
@@ -314,27 +421,61 @@ void loop() {
   Serial.println(" mA");
   Serial.print("Battery voltage while heater is on: ");
   Serial.println(batteryVoltage);
-  delay(1);
 
 
 #ifdef ARDUINO_ADAFRUIT_FEATHER_RP2040_ADALOGGER
+  delay(1);
   Serial.print("Internal temp: ");
   Serial.print(analogReadTemp());
   Serial.println(" C");
 #endif
 
-  // Turn itself off
-  digitalWrite(KEEP_ON, 0);
-  delay(1000);
+  readId();
 
-  // Wait for alarm
-  Serial.print("Waiting for alarm");
-  while (!rtc.alarmFired(1))
+  if (setupSD())
   {
-    delay(1000);
-    Serial.print(".");
+    Serial.println("Writing to SD");
+    appendToSD("Hello, world!", id);
+#ifdef ARDUINO_ADAFRUIT_FEATHER_RP2040_ADALOGGER
+    appendToSD("From RP2040", id);
+#endif
+#ifdef ADAFRUIT_FEATHER_M0
+    appendToSD("From M0", id);
+#endif
+    
+    char datetime[32] = "YYYY-MM-DD hh:mm:ss";
+    rtc.now().toString(datetime);
+    appendToSD(datetime, id);
   }
-  Serial.println();
+
+
+  if (!digitalRead(SW_AUX))
+  {
+    Serial.println("Aux switch pressed, running another cycle immediately");
+  }
+  else
+  {
+    Serial.println("Aux switch not pressed, going to sleep");
+    
+    // Turn itself off
+    digitalWrite(KEEP_ON, 0);
+    delay(1000);
+
+    // Wait for alarm
+    Serial.print("Waiting for alarm");
+    while (!rtc.alarmFired(1))
+    {
+      if (!digitalRead(SW_AUX))
+      {
+        Serial.println("Aux switch pressed, running another cycle immediately");
+        break;
+      }
+
+      delay(1000);
+      Serial.print(".");
+    }
+    Serial.println();
+  }
 
 }
 
