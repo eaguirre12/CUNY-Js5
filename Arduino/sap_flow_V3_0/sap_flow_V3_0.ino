@@ -1,5 +1,4 @@
 
-#include <RTClib.h>
 
 #define SW_AUX A2
 
@@ -16,8 +15,6 @@
 #endif
 
 
-RTC_DS3231 rtc;
-
 
 void setup() {
 
@@ -27,9 +24,9 @@ void setup() {
   pinMode(HEAT, OUTPUT);
   digitalWrite(HEAT, 0);
 
-  setupLeds();
-
   Serial.begin(9600); // Value ignored
+
+  setupLeds();
 
   setup_thermistors();
 
@@ -37,6 +34,7 @@ void setup() {
 
   pinMode(SW_AUX, INPUT_PULLUP);
 
+  setup_rtc();
 }
 
 void loop() {
@@ -92,34 +90,18 @@ void loop() {
   }
   Serial.println();
 
-  if (rtc.begin())
+  if (rtcLostPower())
   {
-    // Serial.println("Found RTC");
-
-    if (rtc.lostPower())
-    {
-      Serial.println("RTC lost power");
-      rtc.adjust(DateTime(2025, 5, 28, 14, 15, 0));
-    }
-
-    char datetime[32] = "YYYY-MM-DD hh:mm:ss";
-    rtc.now().toString(datetime);
-
-    Serial.print("Current time: ");
-    Serial.println(datetime);
-
-    rtc.disable32K();
-    rtc.writeSqwPinMode(DS3231_OFF);
-
-    rtc.clearAlarm(1);
-    rtc.clearAlarm(2);
-
-    rtc.setAlarm1(DateTime(0, 0, 0, 0, 0, 0), DS3231_A1_Second);
+    Serial.println("RTC lost power");
+    setRtcTime(2025, 5, 28, 14, 15, 0);
   }
-  else
-  {
-    Serial.println("Couldn't find RTC");
-  }
+
+  String timestamp = getTimestamp();
+  Serial.print("Current time: ");
+  Serial.println(timestamp);
+
+  clearAlarm1();
+  setAlarm1(1);
 
 
 
@@ -163,10 +145,9 @@ void loop() {
 #ifdef ADAFRUIT_FEATHER_M0
     appendToSD("From M0", id);
 #endif
-    
-    char datetime[32] = "YYYY-MM-DD hh:mm:ss";
-    rtc.now().toString(datetime);
-    appendToSD(datetime, id);
+
+    String timestamp = getTimestamp();
+    appendToSD(timestamp, id);
   }
 
 
@@ -184,7 +165,7 @@ void loop() {
 
     // Wait for alarm
     Serial.print("Waiting for alarm");
-    while (!rtc.alarmFired(1))
+    while (!isAlarm1Fired())
     {
       if (!digitalRead(SW_AUX))
       {

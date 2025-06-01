@@ -20,7 +20,7 @@
 bool setupSD()
 {
   pinMode(SD_CARD_DETECT, INPUT_PULLUP);
-  
+
   if (digitalRead(SD_CARD_DETECT))
   {
     Serial.println("SD card inserted");
@@ -59,6 +59,11 @@ void appendToSD(const char* str, int id)
   File f = SD.open(filename, FILE_WRITE);
   f.println(str);
   f.close();
+}
+
+void appendToSD(String str, int id)
+{
+  appendToSD(str.c_str(), id);
 }
 
 
