@@ -2,9 +2,6 @@
 #include <RTClib.h>
 #include <SD.h>
 
-
-#define V_BAT_SENSE A0
-#define HEATER_SENSE A1
 #define SW_AUX A2
 
 
@@ -18,11 +15,6 @@
   #define SD_MOSI 19
   #define SD_MISO 20
   #define SD_CARD_DETECT 16
-  
-  // The RP2040 doesn't have A4 and A5, so for now just read A3 for all three
-  #define ID_0 A3
-  #define ID_1 A3
-  #define ID_2 A3
 #endif
 
 #ifdef ADAFRUIT_FEATHER_M0
@@ -31,10 +23,6 @@
   
   #define SD_CS 4
   #define SD_CARD_DETECT 7
-  
-  #define ID_0 A5
-  #define ID_1 A4
-  #define ID_2 A3
 #endif
 
 
@@ -81,82 +69,10 @@ void appendToSD(const char* str, int id)
 }
 
 
-float analogReadAverage(int pin, int n)
-{
-  uint32_t result = 0;
-  for (int i = 0; i < n; ++i)
-  {
-    result += analogRead(pin);
-  }
-  return result / (float)n;
-}
-
-
-int analogRange = 1 << 10;
-
-float readBatteryVoltage()
-{
-  float vbat = analogReadAverage(V_BAT_SENSE, 16);
-  vbat /= analogRange;
-  vbat *= 3.3;
-  vbat /= (10.0 / 110.0);
-  return vbat;
-}
-
-float readHeaterCurrent()
-{
-  float sense_resistor = 1;
-  float heater_sense = analogReadAverage(HEATER_SENSE, 16);
-  float current_mA = heater_sense / 4095.0 * 3.3 / sense_resistor * 1000.0;
-  return current_mA;
-}
-
 
 
 RTC_DS3231 rtc;
 
-
-
-int id = 0;
-
-int analogToDigit(int pin)
-{
-  pinMode(pin, INPUT);
-  auto val = analogRead(pin);
-  float increment = analogRange / 10.0;
-  float grayArea = analogRange / 80.0;
-  for (int i = 0; i <= 9; ++i)
-  {
-    float threshold = (i + 1) * increment;
-    float lowerGrayArea = i * increment + grayArea;
-    float upperGrayArea = threshold - grayArea;
-    if (val < threshold)
-    {
-      if (i > 0 && val < lowerGrayArea)
-      {
-        Serial.printf("Warning: ID pin %i is in the lower gray area. ", pin);
-        Serial.printf("val = %i, threshold = %i, lowerGrayArea = %i\n", val, (int)threshold, (int)lowerGrayArea);
-      }
-      if (i < 9 && val > upperGrayArea)
-      {
-        Serial.printf("Warning: ID pin %i is in the upper gray area. ", pin);
-        Serial.printf("val = %i, threshold = %i, upperGrayArea = %i\n", val, (int)threshold, (int)upperGrayArea);
-      }
-      return i;
-    }
-  }
-  return 9;
-}
-
-void readId()
-{
-  id = 0;
-  id += analogToDigit(ID_0);
-  id += analogToDigit(ID_1) * 10;
-  id += analogToDigit(ID_2) * 100;
-  Serial.print("Read ID as ");
-  Serial.println(id);
-}
 
 
 void setup() {
@@ -173,15 +89,11 @@ void setup() {
 
   setup_thermistors();
 
-
-  analogReadResolution(12);
-  analogRange = 1 << 12;
+  setupAdc();
 
   pinMode(SW_AUX, INPUT_PULLUP);
 
   pinMode(SD_CARD_DETECT, INPUT_PULLUP);
-
-  readId();
 }
 
 void loop() {
@@ -296,7 +208,7 @@ void loop() {
   Serial.println(" C");
 #endif
 
-  readId();
+  int id = readId();
 
   if (setupSD())
   {

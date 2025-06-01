@@ -167,3 +167,10 @@ Ah, here's a problem. The RP2040 only has 4 analog pins!
 Continuing on these notes, duplicated from `turn_on_V3_0`
 
 Refactoring the code into several files
+
+
+I'm seeing some strangeness from the ADC. The first time I read the values, they look good. The second time they're all around 500-300.
+    I think it's only on the M0
+    Ah, the pink (brown) was unplugged
+    Hmm, that didn't seem to make much difference
+    For now I'll just use the RP2040
