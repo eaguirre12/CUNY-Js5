@@ -1,3 +1,6 @@
+#include "leds.h"
+
+#include <Arduino.h>
 
 #ifdef ARDUINO_ADAFRUIT_FEATHER_RP2040_ADALOGGER
 #include <Adafruit_NeoPixel.h>

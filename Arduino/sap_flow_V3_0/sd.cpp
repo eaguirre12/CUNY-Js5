@@ -1,3 +1,6 @@
+#include "sd.h"
+
+#include <Arduino.h>
 
 #include <SD.h>
 

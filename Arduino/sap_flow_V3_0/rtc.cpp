@@ -1,3 +1,6 @@
+#include "rtc.h"
+
+#include <Arduino.h>
 
 #include <RTClib.h>
 

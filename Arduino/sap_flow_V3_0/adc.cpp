@@ -1,3 +1,6 @@
+#include "adc.h"
+
+#include <Arduino.h>
 
 #define V_BAT_SENSE A0
 #define HEATER_SENSE A1

@@ -1,4 +1,6 @@
+#include "misc.h"
 
+#include <Arduino.h>
 
 #define SW_AUX A2
 

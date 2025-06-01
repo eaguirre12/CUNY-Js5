@@ -1,4 +1,9 @@
 
+#include "adc.h"
+#include "leds.h"
+#include "misc.h"
+#include "rtc.h"
+#include "sd.h"
 #include "thermistors.h"
 
 void setup() {
