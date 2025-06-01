@@ -34,6 +34,11 @@
   #define SD_MOSI 19
   #define SD_MISO 20
   #define SD_CARD_DETECT 16
+  
+  // The RP2040 doesn't have A4 and A5, so for now just read A3 for all three
+  #define ID_0 A3
+  #define ID_1 A3
+  #define ID_2 A3
 #endif
 
 #ifdef ADAFRUIT_FEATHER_M0
