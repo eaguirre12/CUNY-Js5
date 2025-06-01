@@ -174,3 +174,34 @@ I'm seeing some strangeness from the ADC. The first time I read the values, they
     Ah, the pink (brown) was unplugged
     Hmm, that didn't seem to make much difference
     For now I'll just use the RP2040
+
+
+
+What are the requirements for the real process?
+    Wake up for an acquisition at the top and bottom of every hour (0 and 30 minutes)
+    Measurement cycle
+        20 seconds pre-heat measurement
+        2 seconds heater on
+        120 seconds post-heat measurement
+    Go to sleep after the measurement cycle
+    Write all parameters to the SD in a CSV table
+        Timestamp
+        Thermistor temperatures
+        Measurement stage
+        Battery voltage
+        Optional:
+            Heater current
+            Ambient temperature (RTC or RP2040)
+    LEDs
+        Power LED is on while the unit is on
+        Timer LED blinks during the measurment process
+        Error LED blinks when something goes wrong
+        Traffic light
+            Red during pre-heat
+            Yellow during heat
+            Green during post-heat
+        On-board red LED
+        Neopixel / on-board yellow
+    Other behaviors
+        If the RTC lost power, it will record the error but still take the measurement
+        If there is an error during startup, it will display the error for 1 minute then turn off anyway
