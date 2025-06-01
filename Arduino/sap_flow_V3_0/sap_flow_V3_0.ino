@@ -1,45 +1,22 @@
 
 
-#define SW_AUX A2
-
-
-// TX pin is different between these two boards
-#ifdef ARDUINO_ADAFRUIT_FEATHER_RP2040_ADALOGGER
-  #define KEEP_ON D0
-  #define HEAT D1
-#endif
-
-#ifdef ADAFRUIT_FEATHER_M0
-  #define KEEP_ON 1
-  #define HEAT 0
-#endif
-
-
-
 void setup() {
-
-  pinMode(KEEP_ON, OUTPUT);
-  digitalWrite(KEEP_ON, 1);
-
-  pinMode(HEAT, OUTPUT);
-  digitalWrite(HEAT, 0);
 
   Serial.begin(9600); // Value ignored
 
+  setup_misc();
+  keep_on(true);
+  heater(false);
+
   setupLeds();
-
   setup_thermistors();
-
   setupAdc();
-
-  pinMode(SW_AUX, INPUT_PULLUP);
-
   setup_rtc();
 }
 
 void loop() {
   // Keep itself on once it starts the loop
-  digitalWrite(KEEP_ON, 1);
+  keep_on(true);
   // Delay after enabling KEEP_ON is necessary, or our battery voltage reading is low.
   // Don't know why yet.
   delay(10);
@@ -113,11 +90,11 @@ void loop() {
   Serial.print("Turning heater on for ");
   Serial.print(heatSeconds);
   Serial.println(" seconds");
-  digitalWrite(HEAT, 1);
+  heater(true);
   delay(heatSeconds * 1000);
   float heaterCurrent = readHeaterCurrent();
   float batteryVoltage = readBatteryVoltage();
-  digitalWrite(HEAT, 0);
+  heater(false);
   Serial.println("Heater off");
   Serial.print("Heater current: ");
   Serial.print(heaterCurrent);
@@ -151,7 +128,7 @@ void loop() {
   }
 
 
-  if (!digitalRead(SW_AUX))
+  if (read_aux_sw())
   {
     Serial.println("Aux switch pressed, running another cycle immediately");
   }
@@ -160,14 +137,14 @@ void loop() {
     Serial.println("Aux switch not pressed, going to sleep");
     
     // Turn itself off
-    digitalWrite(KEEP_ON, 0);
+    keep_on(false);
     delay(1000);
 
     // Wait for alarm
     Serial.print("Waiting for alarm");
     while (!isAlarm1Fired())
     {
-      if (!digitalRead(SW_AUX))
+      if (read_aux_sw())
       {
         Serial.println("Aux switch pressed, running another cycle immediately");
         break;
