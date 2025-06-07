@@ -205,3 +205,18 @@ What are the requirements for the real process?
     Other behaviors
         If the RTC lost power, it will record the error but still take the measurement
         If there is an error during startup, it will display the error for 1 minute then turn off anyway
+
+
+
+What's the order that I should set things up?
+    If any error happens, I want to blink the error LED for 1 minute then power down. So I want to set the alarm to wake up again. So RTC should be first.
+    If any error happens, I want to report it to the SD card. So the SD should be first.
+    The LEDs can't fail (except for the NeoPixel), so they should be early.
+
+
+
+## 2025-06-02
+
+Ah! The SCK, MOSI, and MISO pins that I used for the mux are also used for the SD on the M0!
+
+

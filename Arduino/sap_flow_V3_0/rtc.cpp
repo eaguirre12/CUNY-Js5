@@ -54,6 +54,10 @@ void setAlarm1(int minuteMultiple)
   }
   minute %= 60;
 
+  Serial.print("Setting alarm for ");
+  Serial.print(minute);
+  Serial.println(" after the hour");
+
   rtc.setAlarm1(DateTime(0, 0, 0, 0, minute, 0), DS3231_A1_Minute);
 }
 

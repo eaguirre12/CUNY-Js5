@@ -48,11 +48,17 @@ enum class HeatingState
 };
 
 
-void measure(HeatingState heatingState);
+int measure(HeatingState heatingState, char* buffer, int size);
+
+char buffer[16384];
 
 void measurementCycle()
 {
-  writeCsvHeader();
+  int size = 16383;
+  int offset = 0;
+  memset(buffer, 0, size);
+
+  offset += writeCsvHeaderToBuffer(buffer + offset, size);
 
   HeatingState heatingState = HeatingState::PREHEAT;
   
@@ -98,7 +104,7 @@ void measurementCycle()
       heater(0);
     }
 
-    measure(heatingState);
+    offset += measure(heatingState, buffer + offset, size);
 
     setTimerLed(0);
 
@@ -109,13 +115,18 @@ void measurementCycle()
   setYellowLed(0);
   setGreenLed(0);
 
-
+  // Re-initialize the SD and write what we buffered
+  setupSD(readId());
+  appendToSD(buffer);
+  Serial.printf("Writing %i bytes to SD\n", offset);
 }
 
 
 // Measure all the parameters and write to the SD
-void measure(HeatingState heatingState)
+int measure(HeatingState heatingState, char* buffer, int size)
 {
+  setup_thermistors();
+
   String timestamp = getTimestamp();
   float t0 = readThermistorTemp(MuxChannel::NEAR_INNER);
   float t1 = readThermistorTemp(MuxChannel::NEAR_MIDDLE);
@@ -141,7 +152,8 @@ void measure(HeatingState heatingState)
   float heaterCurrent = readHeaterCurrent();
   float ambientTemp = rtcTemperature();
 
-  writeCsvRow(timestamp.c_str(), t0, t1, t2, t3, t4, t5, phase, batteryVoltage, heaterCurrent, ambientTemp);
+  // writeCsvRow(timestamp.c_str(), t0, t1, t2, t3, t4, t5, phase, batteryVoltage, heaterCurrent, ambientTemp);
+  return writeCsvRowToBuffer(timestamp.c_str(), t0, t1, t2, t3, t4, t5, phase, batteryVoltage, heaterCurrent, ambientTemp, buffer, size);
 }
 
 
@@ -153,7 +165,7 @@ void loop() {
   if (rtcLostPower())
   {
     Serial.println("RTC lost power");
-    setRtcTime(2025, 5, 28, 14, 15, 0);
+    setRtcTime(2025, 6, 2, 23, 35, 59);
   }
 
   String timestamp = getTimestamp();
@@ -177,9 +189,8 @@ void loop() {
     appendToSD(timestamp);
   }
 
-
-  // setAlarm1(T_MINS);
-  setAlarm1(5);
+  clearAlarm1();
+  setAlarm1(T_MINS);
 
   measurementCycle();
 

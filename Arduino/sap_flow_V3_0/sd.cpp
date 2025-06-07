@@ -82,6 +82,16 @@ void writeCsvHeader()
   Serial.println(text);
 }
 
+int writeCsvHeaderToBuffer(char* buffer, int size)
+{
+  const char* text = "Datetime, Temp0, Temp1, Temp2, Temp3, Temp4, Temp5, Phase, Battery Voltage, Heater Current, Ambient Temp\n";
+  // appendToSD(text);
+  int toCopy = min(size, strlen(text));
+  memcpy(buffer, text, toCopy);
+  Serial.print(text);
+  return toCopy;
+}
+
 void writeCsvRow(
   const char* timestamp,
   float thermistor0,
@@ -106,10 +116,45 @@ void writeCsvRow(
   line += String(thermistor5, 3) + ", ";
   line += String(measurementPhase) + ", ";
   line += String(batteryVoltage, 3) + ", ";
-  line += String(heaterCurrent, 3) + ", ";
+  line += String(heaterCurrent, 0) + ", ";
   line += String(ambientTemp, 1);
   appendToSD(line);
   Serial.println(line);
+}
+
+int writeCsvRowToBuffer(
+  const char* timestamp,
+  float thermistor0,
+  float thermistor1,
+  float thermistor2,
+  float thermistor3,
+  float thermistor4,
+  float thermistor5,
+  const char* measurementPhase,
+  float batteryVoltage,
+  float heaterCurrent,
+  float ambientTemp,
+  char* buffer,
+  int size
+)
+{
+  String line(timestamp);
+  line += String(", ");
+  line += String(thermistor0, 3) + ", ";
+  line += String(thermistor1, 3) + ", ";
+  line += String(thermistor2, 3) + ", ";
+  line += String(thermistor3, 3) + ", ";
+  line += String(thermistor4, 3) + ", ";
+  line += String(thermistor5, 3) + ", ";
+  line += String(measurementPhase) + ", ";
+  line += String(batteryVoltage, 3) + ", ";
+  line += String(heaterCurrent, 0) + ", ";
+  line += String(ambientTemp, 1);
+  line += String("\n");
+  int toCopy = min(size, line.length());
+  memcpy(buffer, line.c_str(), toCopy);
+  Serial.print(line);
+  return toCopy;
 }
 
 
