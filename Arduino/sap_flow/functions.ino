@@ -117,60 +117,60 @@ void waitForNextSecond()
 }
 
 
-/* Set alarm 1 for the end of the preheat period. */
-void setPreheatAlarm() {
+// /* Set alarm 1 for the end of the preheat period. */
+// void setPreheatAlarm() {
 
-  if (rtc_ds3231.alarmFired(2)) {
-    writeTextSD("setPREH: A2 fired, clear A1");
-    rtc_ds3231.disableAlarm(1);
-    rtc_ds3231.clearAlarm(1);
-  } else {
-    writeTextSD("setPREH: A2 not fired!");
-  }
-  writeTextSD("setting A1 for H");
+//   if (rtc_ds3231.alarmFired(2)) {
+//     writeTextSD("setPREH: A2 fired, clear A1");
+//     rtc_ds3231.disableAlarm(1);
+//     rtc_ds3231.clearAlarm(1);
+//   } else {
+//     writeTextSD("setPREH: A2 not fired!");
+//   }
+//   writeTextSD("setting A1 for H");
 
-  DateTime DT = rtc_ds3231.now() + TimeSpan(0, PREH_HRS, PREH_MINS, PREH_SECS);
+//   DateTime DT = rtc_ds3231.now() + TimeSpan(0, PREH_HRS, PREH_MINS, PREH_SECS);
 
-  printDateTime();
-  Serial.print("H will start at ");
-  printTime(DT);
-  Serial.println();
+//   printDateTime();
+//   Serial.print("H will start at ");
+//   printTime(DT);
+//   Serial.println();
 
-  if (!rtc_ds3231.setAlarm1(DT, DS3231_A1_Hour))
-    Serial.println("Error, alarm 1 PREH wasn't set!");
-}
+//   if (!rtc_ds3231.setAlarm1(DT, DS3231_A1_Hour))
+//     Serial.println("Error, alarm 1 PREH wasn't set!");
+// }
 
-/* Set alarm 1 for the end of the heat period. */
-void setHeatAlarm() {  //
-  rtc_ds3231.disableAlarm(1);
-  rtc_ds3231.clearAlarm(1);
+// /* Set alarm 1 for the end of the heat period. */
+// void setHeatAlarm() {  //
+//   rtc_ds3231.disableAlarm(1);
+//   rtc_ds3231.clearAlarm(1);
 
-  DateTime DT = rtc_ds3231.now() + TimeSpan(0, H_HRS, H_MINS, H_SECS);
+//   DateTime DT = rtc_ds3231.now() + TimeSpan(0, H_HRS, H_MINS, H_SECS);
 
-  printDateTime();
-  Serial.print("POSTH will start at ");
-  printTime(DT);
-  Serial.println();
+//   printDateTime();
+//   Serial.print("POSTH will start at ");
+//   printTime(DT);
+//   Serial.println();
 
-  if (!rtc_ds3231.setAlarm1(DT, DS3231_A1_Hour))
-    Serial.println("Error, alarm 1 H wasn't set!");
-}
+//   if (!rtc_ds3231.setAlarm1(DT, DS3231_A1_Hour))
+//     Serial.println("Error, alarm 1 H wasn't set!");
+// }
 
-/* Set alarm 1 for the end of the postheat period. */
-void setPostheatAlarm() {
-  rtc_ds3231.disableAlarm(1);
-  rtc_ds3231.clearAlarm(1);
+// /* Set alarm 1 for the end of the postheat period. */
+// void setPostheatAlarm() {
+//   rtc_ds3231.disableAlarm(1);
+//   rtc_ds3231.clearAlarm(1);
 
-  DateTime DT = rtc_ds3231.now() + TimeSpan(0, POSTH_HRS, POSTH_MINS, POSTH_SECS);
+//   DateTime DT = rtc_ds3231.now() + TimeSpan(0, POSTH_HRS, POSTH_MINS, POSTH_SECS);
 
-  printDateTime();
-  Serial.print("POSTH will end at ");
-  printTime(DT);
-  Serial.println();
+//   printDateTime();
+//   Serial.print("POSTH will end at ");
+//   printTime(DT);
+//   Serial.println();
 
-  if (!rtc_ds3231.setAlarm1(DT, DS3231_A1_Hour))
-    Serial.println("Error, alarm 1 POSTH wasn't set!");
-}
+//   if (!rtc_ds3231.setAlarm1(DT, DS3231_A1_Hour))
+//     Serial.println("Error, alarm 1 POSTH wasn't set!");
+// }
 
 /* Measure the battery using A0, with 1k/10k voltage divider. 
  * Returns in unit Volts.
@@ -290,12 +290,13 @@ void writeHeaderSD() {
 
   myFile.print("M-");
   myFile.print(datetime);
-  myFile.printf(" T=%d:%d:%d PREH=%d:%d:%d H=%d:%d:%d POSTH=%d:%d:%d \n",
-                T_HRS, T_MINS, T_SECS, PREH_HRS, PREH_MINS, PREH_SECS,
-                H_HRS, H_MINS, H_SECS, POSTH_HRS, POSTH_MINS, POSTH_SECS);
-  myFile.print("M-");
-  myFile.print(datetime);
-  myFile.printf(" Sleep Time: %d:%d, Wake Time: %d:%d \n", SLEEP_HRS, SLEEP_MINS, WAKE_HRS, WAKE_MINS);
+  myFile.printf(" T_MINS=%d PREH_SECS=%d H_SECS=%d POSTH_SECS=%d\n", T_MINS, PREH_SECS, H_SECS, POSTH_SECS);
+  // myFile.printf(" T=%d:%d:%d PREH=%d:%d:%d H=%d:%d:%d POSTH=%d:%d:%d \n",
+  //               T_HRS, T_MINS, T_SECS, PREH_HRS, PREH_MINS, PREH_SECS,
+  //               H_HRS, H_MINS, H_SECS, POSTH_HRS, POSTH_MINS, POSTH_SECS);
+  // myFile.print("M-");
+  // myFile.print(datetime);
+  // myFile.printf(" Sleep Time: %d:%d, Wake Time: %d:%d \n", SLEEP_HRS, SLEEP_MINS, WAKE_HRS, WAKE_MINS);
 
   // Report the battery level here
   const float batteryLevel = measureVoltage();
