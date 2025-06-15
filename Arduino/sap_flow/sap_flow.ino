@@ -134,7 +134,8 @@ What is the purpose of fireAlarm2()?
 //         PREH   H       POSTH
 //.......|............................T....................|....................
 /// note: T > PREH + H + POSTH > TS
-#define DEVICE_NAME "SF_11"
+#define DEVICE_NAME "SF_03"
+#define FILE_NAME DEVICE_NAME ".txt"
 // states (periods) in cycle
 enum class HeatingState
 {
