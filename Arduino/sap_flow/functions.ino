@@ -8,10 +8,24 @@ void errorBlinkLoop()
   }
 }
 
+// callback for setting correct date and time on SD card
+void dateTime(uint16_t* date, uint16_t* time)
+{
+  DateTime now = rtc_ds3231.now();
+  // return date using FAT_DATE macro to format fields
+  *date = FAT_DATE(now.year(), now.month(), now.day());
+
+  // return time using FAT_TIME macro to format fields
+  *time = FAT_TIME(now.hour(), now.minute(), now.second());
+}
+
 #define SD_CHIP_SELECT 4
 /*
 */
 void initializeSD_ADC() {
+  // Setup the callback for using the correct date and time for file modification
+  SdFile::dateTimeCallback(dateTime);
+
 
   if (!SD.begin(SD_CHIP_SELECT)) {
     Serial.println("Card failed or not present!");
