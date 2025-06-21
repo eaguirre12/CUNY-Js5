@@ -220,3 +220,45 @@ What's the order that I should set things up?
 Ah! The SCK, MOSI, and MISO pins that I used for the mux are also used for the SD on the M0!
 
 
+## 2025-06-15
+
+Ok, so which microcontroller board do I want?
+    M0
+        The SCK, MOSI, and MISO pins are shared between SD and pins
+        Has 6 ADC pins, of which I planned to use 3 for ID
+        Has red and green on-board LEDs
+        Available pins (unused by anything on-board)
+            D12, 11, 10, 9, 6, 5, 0, 1
+                D9 has a VBAT voltage divider, should be usable
+            SDA, SCL
+            A0, 1, 2, 3, 4, 5
+    RP2040
+        SD has independent pins
+        Has 4 ADC pins, leaving us one short (assuming we re-allocate the switch on A2)
+            I could use the two spare mux channels
+        Has D4
+        Has red LED and Neopixel on-board
+        Available pins (unused by anything on-board)
+            D12, 11, 10, 9, 6, 5, 24, 25, 0, 1, 4
+            SDA, SCL
+            SCK, MOSI, MISO
+            A0, 1, 2, 3
+    RP2040 has lots more free GPIO. The main downside is missing a few ADC channels, but I can make up for that.
+
+
+
+
+TODO
+    Switch to RP2040
+    Replace the connector with a 45-degree screw terminal
+        Waiting for feedback from Evonne and Joy
+    Consider a diode from 3.3V to USB
+
+
+## 2025-06-21
+
+Evonne brought back a non-functioning v3 from the field
+    I don't remember exactly what was happening with the LEDs (something strange) before I re-loaded the code, but I wasn't seeing any serial output.
+    I loaded the latest code, and it's going through the measurement cycle really fast. There's messages about not finding the ADC, the ADC never finishing. 
+    I think it was going really fast because it couldn't contact the RTC either, so the function to wait for the next second ended early.
+    But after cutting power and restoring it, now it seems to be working fine. Huh.
