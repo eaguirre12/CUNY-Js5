@@ -257,7 +257,7 @@
 		(sheetname "Root")
 		(sheetfile "SFS.kicad_sch")
 		(clearance 0.2)
-		(attr through_hole)
+		(attr through_hole exclude_from_pos_files exclude_from_bom)
 		(fp_line
 			(start -1.7 1)
 			(end -1.7 -1)
@@ -679,7 +679,7 @@
 			(remove_unused_layers no)
 			(net 63 "unconnected-(A1-D25-Pad10)")
 			(pinfunction "D25")
-			(pintype "bidirectional")
+			(pintype "bidirectional+no_connect")
 			(uuid "8844503b-e268-49b6-a7a5-03f8c5269453")
 		)
 		(pad "11" thru_hole oval
@@ -757,7 +757,7 @@
 			(remove_unused_layers no)
 			(net 62 "unconnected-(A1-D4-Pad16)")
 			(pinfunction "D4")
-			(pintype "bidirectional")
+			(pintype "bidirectional+no_connect")
 			(uuid "6e4843bb-e002-44d5-9ea9-2f40dd7dfbfd")
 		)
 		(pad "17" thru_hole oval
@@ -12159,7 +12159,7 @@
 		(path "/2db05104-f50f-4242-a849-2be4e17ec9b7")
 		(sheetname "Root")
 		(sheetfile "SFS.kicad_sch")
-		(attr through_hole)
+		(attr through_hole exclude_from_pos_files exclude_from_bom)
 		(fp_line
 			(start -1.75 1.5)
 			(end 33.25 1.5)
@@ -14562,7 +14562,7 @@
 		(path "/6fd469d6-7bae-46d3-bb87-0db84a713450")
 		(sheetname "Root")
 		(sheetfile "SFS.kicad_sch")
-		(attr exclude_from_pos_files)
+		(attr exclude_from_pos_files exclude_from_bom)
 		(fp_line
 			(start 5.16 1.185)
 			(end 5.16 9.24)
