@@ -262,3 +262,14 @@ Evonne brought back a non-functioning v3 from the field
     I loaded the latest code, and it's going through the measurement cycle really fast. There's messages about not finding the ADC, the ADC never finishing. 
     I think it was going really fast because it couldn't contact the RTC either, so the function to wait for the next second ended early.
     But after cutting power and restoring it, now it seems to be working fine. Huh.
+
+
+## 2025-06-25
+
+Evonne has been needing to change the heat pulse length quite a bit in the field.
+    Let's add some config switches
+    Options
+        Rotary coded switches
+        DIP switches
+        Jumpers
+    I'll go with rotary
