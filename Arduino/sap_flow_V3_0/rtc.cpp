@@ -1,5 +1,7 @@
 #include "rtc.h"
 
+#include "errors.h"
+
 #include <Arduino.h>
 
 #include <RTClib.h>
@@ -11,6 +13,7 @@ bool setup_rtc()
   if (!rtc.begin())
   {
     Serial.println("Couldn't find RTC");
+    signalErrorAndPowerOff(Error::RTC_MISSING);
     return false;
   }
   
@@ -125,10 +128,17 @@ void clearAlarm1()
 void waitForNextSecond()
 {
   DateTime startTime = rtc.now();
-  while (rtc.now() == startTime) 
+  // Limit this to 2 seconds of actual waiting in case the clock isn't running
+  for (int i = 0; i < 2000; ++i)
   {
+    if (rtc.now() != startTime)
+    {
+      return;
+    }
     delay(1);
   }
+  // If the second never advanced, signal an error
+  signalErrorAndPowerOff(Error::RTC_NOT_SET);
 }
 
 float rtcTemperature()

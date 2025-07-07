@@ -165,7 +165,8 @@ void loop() {
   if (rtcLostPower())
   {
     Serial.println("RTC lost power");
-    setRtcTime(2025, 6, 2, 23, 35, 59);
+
+    setRtcTimeFromSerial();
   }
 
   String timestamp = getTimestamp();

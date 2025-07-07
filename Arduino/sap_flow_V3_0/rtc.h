@@ -7,6 +7,7 @@ bool setup_rtc();
 bool rtcLostPower();
 
 void setRtcTime(int year, int month, int day, int hour, int minute, int second);
+void setRtcTimeFromSerial(int timeout = 120);
 
 String getTimestamp();
 
