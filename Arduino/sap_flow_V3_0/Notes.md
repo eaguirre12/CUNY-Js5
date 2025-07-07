@@ -273,3 +273,54 @@ Evonne has been needing to change the heat pulse length quite a bit in the field
         DIP switches
         Jumpers
     I'll go with rotary
+
+
+## 2025-07-06
+
+Let's think about all the possible failure modes
+    Connection errors
+        Battery connected backwards
+        Thermistor wires connected poorly
+        Heater wires connected poorly
+    ADC
+        Cannot find ADC
+        ADC blocks forever during an acquisition
+        ADC data is garbage
+    RTC
+        RTC has not had its time set
+        RTC has temporarily lost power, but still has the correct time
+        RTC has lost power and does not have the correct time
+        Alarm is not set properly, and the uC will never wake up
+        Cannot communicate with RTC
+        waitForNextSecond() never returns
+    Heater
+        Heater is not connected at all
+        Heater has a poor connection
+        Heater is shorted
+        Heater doesn't turn on when requested
+        Heater doesn't deliver as much power as expected
+    SD
+        SD card is not preset
+        SD card is not connected properly
+        SD card detect pin says there's nothing inserted, but we can still communicate
+        SD card detect pin says it's inserted, but we can't communicate with it
+        SD card is fake
+        SD card fails
+    Battery
+        Battery is low
+        Battery voltage drops substantially while running the heater
+        Battery voltage is too high
+        Battery is connected backwards
+    Power
+        Device is powered by USB only
+        Device is powered by battery only
+        Device is powered by USB and battery
+    LEDs
+        LED has failed short
+        LED has failed open
+        LED draws too much current
+    Bootup conditions
+        Device is woken by RTC alarm
+        Device is woken by push button
+        Device is woken because it has USB power
+        Keep-on fails to keep the device on

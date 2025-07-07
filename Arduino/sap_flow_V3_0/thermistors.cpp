@@ -1,6 +1,8 @@
 
 #include "thermistors.h"
 
+#include "errors.h"
+
 #include <Arduino.h>
 #include <Adafruit_I2CDevice.h>
 
@@ -37,6 +39,7 @@ bool setup_thermistors()
   if (!adc_i2c.begin())
   {
     Serial.println("Couldn't find ADS1100");
+    signalErrorAndPowerOff(Error::ADC_MISSING);
     return false;
   }
 
@@ -97,6 +100,7 @@ int16_t read_thermistor(int mux_channel)
   if (!done)
   {
     Serial.println("ADC never finished");
+    signalErrorAndPowerOff(Error::ADC_TIMED_OUT);
     return 0;
   }
 

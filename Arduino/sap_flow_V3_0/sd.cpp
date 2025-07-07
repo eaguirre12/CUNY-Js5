@@ -1,5 +1,7 @@
 #include "sd.h"
 
+#include "errors.h"
+
 #include <Arduino.h>
 
 #include <SD.h>
@@ -52,6 +54,7 @@ bool setupSD(int id)
   if (!result)
   {
     Serial.println("SD card not started");
+    signalErrorAndPowerOff(Error::SD_CARD_ERROR);
     return false;
   }
   else
