@@ -26,9 +26,9 @@ void setup() {
 // This should evenly divide an hour, because we set the alarm to the next multiple.
 #define T_MINS 30
 /// PREH is the measurement period before heat on
-#define PREH_SECS 20
+#define PREH_SECS 100
 /// H is the period to apply heat
-#define H_SECS 2
+#define H_SECS 4
 /// POTSTH is the measurement period after heat
 #define POSTH_SECS 120
 
@@ -48,17 +48,22 @@ enum class HeatingState
 };
 
 
-int measure(HeatingState heatingState, char* buffer, int size);
+// int measure(HeatingState heatingState, char* buffer, int size);
+void measure(HeatingState heatingState);
 
-char buffer[16384];
+int id;
+
+// char buffer[16384];
 
 void measurementCycle()
 {
-  int size = 16383;
-  int offset = 0;
-  memset(buffer, 0, size);
+  // int size = sizeof(buffer) - 1;
+  // int offset = 0;
+  // memset(buffer, 0, size);
 
-  offset += writeCsvHeaderToBuffer(buffer + offset, size);
+  // offset += writeCsvHeaderToBuffer(buffer + offset, size);
+  setupSD(id);
+  writeCsvHeader();
 
   HeatingState heatingState = HeatingState::PREHEAT;
   
@@ -104,7 +109,8 @@ void measurementCycle()
       heater(0);
     }
 
-    offset += measure(heatingState, buffer + offset, size);
+    // offset += measure(heatingState, buffer + offset, size);
+    measure(heatingState);
 
     setTimerLed(0);
 
@@ -116,14 +122,15 @@ void measurementCycle()
   setGreenLed(0);
 
   // Re-initialize the SD and write what we buffered
-  setupSD(readId());
-  appendToSD(buffer);
-  Serial.printf("Writing %i bytes to SD\n", offset);
+  // setupSD(id);
+  // appendToSD(buffer);
+  // Serial.printf("Writing %i bytes to SD\n", offset);
 }
 
 
 // Measure all the parameters and write to the SD
-int measure(HeatingState heatingState, char* buffer, int size)
+// int measure(HeatingState heatingState, char* buffer, int size)
+void measure(HeatingState heatingState)
 {
   setup_thermistors();
 
@@ -153,7 +160,10 @@ int measure(HeatingState heatingState, char* buffer, int size)
   float ambientTemp = rtcTemperature();
 
   // writeCsvRow(timestamp.c_str(), t0, t1, t2, t3, t4, t5, phase, batteryVoltage, heaterCurrent, ambientTemp);
-  return writeCsvRowToBuffer(timestamp.c_str(), t0, t1, t2, t3, t4, t5, phase, batteryVoltage, heaterCurrent, ambientTemp, buffer, size);
+  // return writeCsvRowToBuffer(timestamp.c_str(), t0, t1, t2, t3, t4, t5, phase, batteryVoltage, heaterCurrent, ambientTemp, buffer, size);
+
+  setupSD(id);
+  writeCsvRow(timestamp.c_str(), t0, t1, t2, t3, t4, t5, phase, batteryVoltage, heaterCurrent, ambientTemp);
 }
 
 
@@ -173,9 +183,9 @@ void loop() {
   Serial.print("Current time: ");
   Serial.println(timestamp);
 
+  id = readId();
 
-
-  if (setupSD(readId()))
+  if (setupSD(id))
   {
     Serial.println("Writing to SD");
     appendToSD("Hello, world!");
