@@ -43,6 +43,7 @@ void setRtcTimeFromSerial(int timeout)
     Serial.read();
   }
 
+  delay(1000);
   Serial.println("Enter date-time as YYYY/MM/dd hh:mm:ss");
   char message[32];
   memset(message, 0, sizeof(message));
