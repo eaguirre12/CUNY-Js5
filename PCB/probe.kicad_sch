@@ -959,6 +959,180 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Device:LED"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "LED"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Light emitting diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "LED diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "LED* LED_SMD:* LED_THT:*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "LED_0_1"
+				(polyline
+					(pts
+						(xy -3.048 -0.762) (xy -4.572 -2.286) (xy -3.81 -2.286) (xy -4.572 -2.286) (xy -4.572 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 -0.762) (xy -3.302 -2.286) (xy -2.54 -2.286) (xy -3.302 -2.286) (xy -3.302 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 -1.27) (xy -1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "LED_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Device:R"
 			(pin_numbers
 				(hide yes)
@@ -1826,6 +2000,16 @@
 		)
 		(uuid "45ea80f3-f4f8-4a7d-a7f4-b79371d72921")
 	)
+	(text "Heater on LED"
+		(exclude_from_sim no)
+		(at 173.736 116.332 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "464dbb62-7951-47b9-a99b-b5cd1994aedf")
+	)
 	(text "Load is (10k + 10k) / 6 = 3.33 kOhm\nReference output voltage is 2.5V\nLoad current = 0.83 mA\nTL431 needs 1 mA cathode current for regulation\nCurrent through series resistor must be at least 1.83 mA\nFrom 3.3V supply, voltage drop is 0.8V\nSeries resistor = 430 Ohm\nDecrease to 390 Ohm for headroom"
 		(exclude_from_sim no)
 		(at 144.78 35.814 0)
@@ -1957,6 +2141,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c64be4ec-7c02-44c0-ac87-4ea8ed72c988")
+	)
+	(junction
+		(at 157.48 125.73)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "cfdb86e1-fbdd-41a1-81f7-fef404050f8e")
 	)
 	(junction
 		(at 55.88 85.09)
@@ -2176,6 +2366,16 @@
 	)
 	(wire
 		(pts
+			(xy 182.88 101.6) (xy 185.42 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "41d8469b-a056-406e-b017-86ff544cd046")
+	)
+	(wire
+		(pts
 			(xy 66.04 78.74) (xy 81.28 78.74)
 		)
 		(stroke
@@ -2183,6 +2383,16 @@
 			(type default)
 		)
 		(uuid "424f4f4e-4488-4981-a2e5-f3734b8cd986")
+	)
+	(wire
+		(pts
+			(xy 185.42 119.38) (xy 185.42 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4ef99df8-8485-440a-a0c4-9e6c4658ff26")
 	)
 	(wire
 		(pts
@@ -2616,6 +2826,16 @@
 	)
 	(wire
 		(pts
+			(xy 185.42 125.73) (xy 157.48 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c8339c7c-0985-4bac-b004-24876bef8bef")
+	)
+	(wire
+		(pts
 			(xy 101.6 34.29) (xy 101.6 41.91)
 		)
 		(stroke
@@ -2663,6 +2883,16 @@
 			(type default)
 		)
 		(uuid "d43e6baa-08ab-4867-9465-4aa01d16278d")
+	)
+	(wire
+		(pts
+			(xy 185.42 101.6) (xy 185.42 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d9c26131-a5c6-47bb-8140-fb596e368e97")
 	)
 	(wire
 		(pts
@@ -2871,6 +3101,17 @@
 				(hide yes)
 			)
 		)
+	)
+	(hierarchical_label "HEAT+"
+		(shape input)
+		(at 182.88 101.6 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "1b54d6ee-643d-44e4-83f1-f01ea1734965")
 	)
 	(hierarchical_label "ADC_SPARE"
 		(shape input)
@@ -5031,6 +5272,85 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:LED")
+		(at 185.42 115.57 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "8c625dfd-89d2-4d81-af53-29046be4adad")
+		(property "Reference" "D8"
+			(at 189.23 115.8874 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "Red"
+			(at 189.23 118.4274 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric_Pad1.05x0.95mm_HandSolder"
+			(at 185.42 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 185.42 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 185.42 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C2286"
+			(at 185.42 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "114cfda7-6669-4851-b16d-872a69629f68")
+		)
+		(pin "1"
+			(uuid "264f4e0c-cc6c-4b2c-a955-a984c4ba0c10")
+		)
+		(instances
+			(project "SFS"
+				(path "/3517b18a-50fb-4c6e-bddd-955d55f67cd1/119654ee-695d-4120-8250-46218bfe8958"
+					(reference "D8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 107.95 152.4 0)
 		(unit 1)
@@ -5339,6 +5659,85 @@
 			(project "SFS"
 				(path "/3517b18a-50fb-4c6e-bddd-955d55f67cd1/119654ee-695d-4120-8250-46218bfe8958"
 					(reference "#PWR03")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 185.42 107.95 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9db9e19c-7da8-4596-af6e-ea3b84a080dc")
+		(property "Reference" "R23"
+			(at 187.96 106.6799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "22k"
+			(at 187.96 109.2199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 183.642 107.95 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 185.42 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 185.42 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C17560"
+			(at 185.42 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b22b141a-d02b-4bd8-a32b-7ac77df3d5e7")
+		)
+		(pin "2"
+			(uuid "6c20eaec-2ecb-4426-9ddc-4e47e8a3cfbb")
+		)
+		(instances
+			(project "SFS"
+				(path "/3517b18a-50fb-4c6e-bddd-955d55f67cd1/119654ee-695d-4120-8250-46218bfe8958"
+					(reference "R23")
 					(unit 1)
 				)
 			)
