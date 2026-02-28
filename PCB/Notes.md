@@ -109,3 +109,43 @@ Some enhancements to consider:
 
 
 
+## General Notes
+
+### Heater
+
+- The East 30 heater was measured as 43.4 Ohms. 
+- We're using a 10-cell NiMH pack, nominal voltage of 12V.
+- Heater current will be 275 mA
+- Heater power will be 3.3 W
+- That's ignoring:
+    - Cell resistance (about 0.5 to 1 Ohm total)
+    - NFET on resistance (about 25 mOhm)
+    - Current sense resistor (if included)
+    - Wire resistance, battery lead is 26 AWG, probably 34 mOhm total
+
+
+
+## Work notes
+
+
+### 2026-02-28
+
+Starting the process
+
+
+#### ADC replacement
+
+LCSC has limited stock of ADS1115 -- only 250 in stock right now. ADS1015 is fully compatible but only 12 bits, which is probably still plenty.
+
+I didn't bother to maintain the ADC pin assignment at this time.
+
+I don't think the ferrite beads are necessary, I'm ommiting them.
+
+Since we aren't on a breakout board (which might have long power leads), I'm excluding the 10 uF decoupling cap and sticking with 100 nF, as is recommended in the datasheet.
+
+### Outstanding TODO
+
+- [ ] Check/document ADC pin assignment
+
+
+
