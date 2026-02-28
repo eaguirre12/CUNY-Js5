@@ -125,15 +125,15 @@ Some enhancements to consider:
 
 
 
-## Work notes
+# Work notes
 
 
-### 2026-02-28
+## 2026-02-28
 
 Starting the process
 
 
-#### ADC replacement
+### ADC replacement
 
 LCSC has limited stock of ADS1115 -- only 250 in stock right now. ADS1015 is fully compatible but only 12 bits, which is probably still plenty.
 
@@ -142,6 +142,19 @@ I didn't bother to maintain the ADC pin assignment at this time.
 I don't think the ferrite beads are necessary, I'm ommiting them.
 
 Since we aren't on a breakout board (which might have long power leads), I'm excluding the 10 uF decoupling cap and sticking with 100 nF, as is recommended in the datasheet.
+
+### Voltage reference
+
+LT1460 is expensive and low stock from LCSC. I'm going with a tried-and-true TL431 circuit.
+
+Load is (10k + 10k) / 6 = 3.33 kOhm
+Reference output voltage is 2.5V
+Load current = 0.83 mA
+TL431 needs 1 mA cathode current for regulation
+Current through series resistor must be at least 1.83 mA
+From 3.3V supply, voltage drop is 0.8V
+Series resistor = 430 Ohm
+
 
 ### Outstanding TODO
 
