@@ -4100,7 +4100,7 @@
 			(uuid "66916139-7567-470d-9f0d-972092ae61c5")
 		)
 		(instances
-			(project ""
+			(project "SFS"
 				(path "/3517b18a-50fb-4c6e-bddd-955d55f67cd1/119654ee-695d-4120-8250-46218bfe8958"
 					(reference "J3")
 					(unit 1)

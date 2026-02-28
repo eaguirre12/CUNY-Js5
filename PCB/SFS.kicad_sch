@@ -6977,7 +6977,7 @@
 			(color 0 0 0 0.0000)
 		)
 		(uuid "119654ee-695d-4120-8250-46218bfe8958")
-		(property "Sheetname" "Analog"
+		(property "Sheetname" "Probe"
 			(at 224.79 23.4184 0)
 			(effects
 				(font
@@ -6986,7 +6986,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "analog.kicad_sch"
+		(property "Sheetfile" "probe.kicad_sch"
 			(at 224.79 38.6846 0)
 			(effects
 				(font
