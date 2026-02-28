@@ -203,6 +203,12 @@ As discussed, I'm supporting both ways.
 Copied from v3
 
 
+### ID solder jumpers
+
+Copied from v3
+
+
+
 ## Outstanding TODO
 
 - [ ] Check/document ADC pin assignment
