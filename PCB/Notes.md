@@ -167,6 +167,14 @@ Should I make it through-hole hand-soldered, or surface-mount assembled? I'm goi
 I defined the pin assignment. See schematic, I'm not going to duplicate it here.
 
 
+### Heater MOSFET
+
+Switching to AO3400A. Bringing in the pull-down and gate resistor from v3. 
+
+Bringing in the 1 Ohm shunt resistor from v3, and connecting it to one of the spare ADC channels.
+
+
+
 ### Outstanding TODO
 
 - [ ] Check/document ADC pin assignment
