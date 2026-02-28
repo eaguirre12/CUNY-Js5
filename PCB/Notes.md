@@ -198,6 +198,11 @@ Using a normal hand-solder through-hole for this.
 As discussed, I'm supporting both ways.
 
 
+### Status LEDs
+
+Copied from v3
+
+
 ## Outstanding TODO
 
 - [ ] Check/document ADC pin assignment
