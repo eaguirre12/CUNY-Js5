@@ -143,6 +143,7 @@ I don't think the ferrite beads are necessary, I'm ommiting them.
 
 Since we aren't on a breakout board (which might have long power leads), I'm excluding the 10 uF decoupling cap and sticking with 100 nF, as is recommended in the datasheet.
 
+
 ### Voltage reference
 
 LT1460 is expensive and low stock from LCSC. I'm going with a tried-and-true TL431 circuit.
@@ -154,6 +155,16 @@ TL431 needs 1 mA cathode current for regulation
 Current through series resistor must be at least 1.83 mA
 From 3.3V supply, voltage drop is 0.8V
 Series resistor = 430 Ohm
+Decrease to 390 Ohm for headroom
+
+
+### Probe connection
+
+JST PH is fine. Our heater current is only a quarter amp.
+
+Should I make it through-hole hand-soldered, or surface-mount assembled? I'm going with assembled.
+
+I defined the pin assignment. See schematic, I'm not going to duplicate it here.
 
 
 ### Outstanding TODO
