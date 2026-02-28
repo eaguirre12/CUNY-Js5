@@ -184,9 +184,18 @@ Copying the RTC circuit from v3.
 Just updated to SMT
 
 
+### Battery inlet
+
+Brought in the strain-relief footprint from v3. 
+
+Also added a JST-PH. I think the polarity is correct -- red is pin 1, unlike with the 10-pin cable assemblies where black is pin 1.
+
+Using a normal hand-solder through-hole for this.
+
 ## Outstanding TODO
 
 - [ ] Check/document ADC pin assignment
+- [ ] Check polarity of JST battery connector
 
 
 
