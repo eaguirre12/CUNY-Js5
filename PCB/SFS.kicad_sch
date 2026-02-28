@@ -3102,6 +3102,16 @@
 		)
 		(uuid "95e57ae9-6a97-49eb-8276-092415079968")
 	)
+	(label "Vbat_sense"
+		(at 110.49 43.18 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "dcef80f2-dc88-4882-916d-37926eebd0f5")
+	)
 	(label "LED_TIMER"
 		(at 226.06 143.51 0)
 		(effects
@@ -3718,7 +3728,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P2.54mm_Vertical"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 97.282 48.26 90)
 			(effects
 				(font
@@ -3737,6 +3747,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 99.06 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C17414 "
 			(at 99.06 48.26 0)
 			(effects
 				(font
@@ -3923,7 +3942,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P2.54mm_Vertical"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 97.282 38.1 90)
 			(effects
 				(font
@@ -3942,6 +3961,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 99.06 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C149504"
 			(at 99.06 38.1 0)
 			(effects
 				(font

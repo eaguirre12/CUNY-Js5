@@ -179,6 +179,11 @@ Bringing in the 1 Ohm shunt resistor from v3, and connecting it to one of the sp
 Copying the RTC circuit from v3.
 
 
+### Battery voltage sensing
+
+Just updated to SMT
+
+
 ## Outstanding TODO
 
 - [ ] Check/document ADC pin assignment
