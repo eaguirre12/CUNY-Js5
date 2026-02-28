@@ -174,8 +174,12 @@ Switching to AO3400A. Bringing in the pull-down and gate resistor from v3.
 Bringing in the 1 Ohm shunt resistor from v3, and connecting it to one of the spare ADC channels.
 
 
+### RTC
 
-### Outstanding TODO
+Copying the RTC circuit from v3.
+
+
+## Outstanding TODO
 
 - [ ] Check/document ADC pin assignment
 
