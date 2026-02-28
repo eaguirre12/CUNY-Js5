@@ -638,6 +638,10 @@
     [
       "d85df7c4-5632-4393-bc95-7c16a427088e",
       "RTC"
+    ],
+    [
+      "cc85d451-feef-4d3e-babc-35776f2066d8",
+      "Regulators"
     ]
   ],
   "text_variables": {}

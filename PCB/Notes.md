@@ -192,6 +192,12 @@ Also added a JST-PH. I think the polarity is correct -- red is pin 1, unlike wit
 
 Using a normal hand-solder through-hole for this.
 
+
+### Microcontroller power
+
+As discussed, I'm supporting both ways.
+
+
 ## Outstanding TODO
 
 - [ ] Check/document ADC pin assignment

@@ -5,196 +5,6 @@
 	(uuid "3517b18a-50fb-4c6e-bddd-955d55f67cd1")
 	(paper "USLetter")
 	(lib_symbols
-		(symbol "Connector:Screw_Terminal_01x02"
-			(pin_names
-				(offset 1.016)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "J"
-				(at 0 2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "Screw_Terminal_01x02"
-				(at 0 -5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "screw terminal"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "TerminalBlock*:*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "Screw_Terminal_01x02_1_1"
-				(rectangle
-					(start -1.27 1.27)
-					(end 1.27 -3.81)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(polyline
-					(pts
-						(xy -0.5334 0.3302) (xy 0.3302 -0.508)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -0.5334 -2.2098) (xy 0.3302 -3.048)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -0.3556 0.508) (xy 0.508 -0.3302)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -0.3556 -2.032) (xy 0.508 -2.8702)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 0 0)
-					(radius 0.635)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 0 -2.54)
-					(radius 0.635)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "Pin_1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 -2.54 0)
-					(length 3.81)
-					(name "Pin_2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Connector_Generic:Conn_01x02"
 			(pin_names
 				(offset 1.016)
@@ -768,6 +578,192 @@
 					(at 3.81 0 180)
 					(length 2.54)
 					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Jumper:SolderJumper_2_Open"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim yes)
+			(in_bom no)
+			(on_board yes)
+			(property "Reference" "JP"
+				(at 0 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SolderJumper_2_Open"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Solder Jumper, 2-pole, open"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "solder jumper SPST"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "SolderJumper*Open*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "SolderJumper_2_Open_0_1"
+				(polyline
+					(pts
+						(xy -0.254 1.016) (xy -0.254 -1.016)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -0.254 -1.016)
+					(mid -1.2656 0)
+					(end -0.254 1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -0.254 -1.016)
+					(mid -1.2656 0)
+					(end -0.254 1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(arc
+					(start 0.254 1.016)
+					(mid 1.2656 0)
+					(end 0.254 -1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0.254 1.016)
+					(mid 1.2656 0)
+					(end 0.254 -1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.254 1.016) (xy 0.254 -1.016)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "SolderJumper_2_Open_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "B"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1458,148 +1454,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Regulator_Linear:L7806"
-			(pin_names
-				(offset 0.254)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "U"
-				(at -3.81 3.175 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "L7806"
-				(at 0 3.175 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" ""
-				(at 0.635 -3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-						(italic yes)
-					)
-					(justify left)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "http://www.st.com/content/ccc/resource/technical/document/datasheet/41/4f/b3/b0/12/d4/47/88/CD00000444.pdf/files/CD00000444.pdf/jcr:content/translations/en.CD00000444.pdf"
-				(at 0 -1.27 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Positive 1.5A 35V Linear Regulator, Fixed Output 6V, TO-220/TO-263/TO-252"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "Voltage Regulator 1.5A Positive"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "TO?252* TO?263* TO?220*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "L7806_0_1"
-				(rectangle
-					(start -5.08 1.905)
-					(end 5.08 -5.08)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-			)
-			(symbol "L7806_1_1"
-				(pin power_in line
-					(at -7.62 0 0)
-					(length 2.54)
-					(name "IN"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at 0 -7.62 90)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_out line
-					(at 7.62 0 180)
-					(length 2.54)
-					(name "OUT"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Switch:SW_Push"
 			(pin_numbers
 				(hide yes)
@@ -2170,128 +2024,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "power:+6V"
-			(power)
-			(pin_names
-				(offset 0)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "#PWR"
-				(at 0 -3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Value" "+6V"
-				(at 0 3.556 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Power symbol creates a global label with name \"+6V\""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "global power"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "+6V_0_1"
-				(polyline
-					(pts
-						(xy -0.762 1.27) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "+6V_1_1"
-				(pin power_in line
-					(at 0 0 90)
-					(length 0)
-					(hide yes)
-					(name "+6V"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "power:GND"
 			(power)
 			(pin_names
@@ -2424,16 +2156,16 @@
 		)
 		(uuid "50e69f66-f5b9-47a9-bb82-a5fbd2ddda3f")
 	)
-	(text "6V"
+	(text "Diode from 3V3 to USB to prevent\nthe onboard regulator from oscillating"
 		(exclude_from_sim no)
-		(at 129.54 81.28 0)
+		(at 161.29 80.518 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify left)
 		)
-		(uuid "7aef2a28-c9ee-4ee2-8531-5b35211cc945")
+		(uuid "7cf47cf1-61a0-4ff8-a278-ae91471edc84")
 	)
 	(text "Aux switch"
 		(exclude_from_sim no)
@@ -2446,17 +2178,6 @@
 		)
 		(uuid "92b0f860-8396-4fa5-8983-8e37619a5688")
 	)
-	(text "for USB micro-b\nwire with plug"
-		(exclude_from_sim no)
-		(at 128.27 53.34 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "abec9762-1cba-4b29-84ca-8fa0fd5caf04")
-	)
 	(text "Choice of JST connector\nor soldering wires to board"
 		(exclude_from_sim no)
 		(at 33.782 19.05 0)
@@ -2467,17 +2188,6 @@
 			(justify left)
 		)
 		(uuid "d0de8bfa-eaee-40f8-87a5-752ba5d1c3c2")
-	)
-	(text "The Adalogger is powered using the\nUSB micro B connector, connected to J4"
-		(exclude_from_sim no)
-		(at 150.368 88.646 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "e4dd5874-0c8a-48d5-af0c-a7912e5accc4")
 	)
 	(text "Three more LEDs for timer, error, power.\nThe exact behavior will be determined later."
 		(exclude_from_sim no)
@@ -2501,12 +2211,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "20f9b99d-d909-4b5d-acd0-c839f1df88b5")
-	)
-	(junction
-		(at 140.97 69.85)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "847101f2-aca6-462c-89b1-932c949910fc")
 	)
 	(junction
 		(at 92.71 81.28)
@@ -2577,22 +2281,8 @@
 		(uuid "95c8419a-1910-4057-a2c2-ee8fb0eb9755")
 	)
 	(no_connect
-		(at 147.32 92.71)
-		(uuid "9cbb6a74-ec7b-45e9-9a71-624301b31015")
-	)
-	(no_connect
 		(at 129.54 135.89)
 		(uuid "def78edf-be04-49d1-bc05-389d473f0d1d")
-	)
-	(wire
-		(pts
-			(xy 140.97 60.96) (xy 140.97 69.85)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "01f0f213-23e1-49c5-9334-6b12cb5aa0ba")
 	)
 	(wire
 		(pts
@@ -2613,16 +2303,6 @@
 			(type default)
 		)
 		(uuid "0bb7223d-4196-4b2b-ab56-dd8e557f8a90")
-	)
-	(wire
-		(pts
-			(xy 120.65 81.28) (xy 140.97 81.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "101681ba-dd91-4c0f-8e92-3b41fbff8743")
 	)
 	(wire
 		(pts
@@ -2696,6 +2376,16 @@
 	)
 	(wire
 		(pts
+			(xy 147.32 90.17) (xy 152.4 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5639e7f0-a26a-451f-a2ef-17980832a6ec")
+	)
+	(wire
+		(pts
 			(xy 115.57 110.49) (xy 129.54 110.49)
 		)
 		(stroke
@@ -2736,6 +2426,16 @@
 	)
 	(wire
 		(pts
+			(xy 147.32 92.71) (xy 147.32 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "65dfbbfc-ef6c-4107-9dfa-5380a9ab4467")
+	)
+	(wire
+		(pts
 			(xy 109.22 143.51) (xy 129.54 143.51)
 		)
 		(stroke
@@ -2773,6 +2473,16 @@
 			(type default)
 		)
 		(uuid "7159949b-71ba-4364-957c-15ca72397af6")
+	)
+	(wire
+		(pts
+			(xy 152.4 90.17) (xy 152.4 87.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "74f7e9f9-cae5-403c-9550-091c98ada96e")
 	)
 	(wire
 		(pts
@@ -2826,16 +2536,6 @@
 	)
 	(wire
 		(pts
-			(xy 140.97 69.85) (xy 140.97 81.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8c9f0b7e-fab1-49c1-ad3b-b10aebb953f7")
-	)
-	(wire
-		(pts
 			(xy 115.57 115.57) (xy 129.54 115.57)
 		)
 		(stroke
@@ -2853,16 +2553,6 @@
 			(type default)
 		)
 		(uuid "9a098c05-e6ff-4132-bda8-0745eed70dfc")
-	)
-	(wire
-		(pts
-			(xy 140.97 69.85) (xy 149.86 69.85)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9af7cfcf-0b4d-4ef5-b7ad-7f19a9d01b8b")
 	)
 	(wire
 		(pts
@@ -2946,16 +2636,6 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 60.96) (xy 138.43 63.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d09dd194-a986-4cbd-a53b-70bad69c84e0")
-	)
-	(wire
-		(pts
 			(xy 124.46 105.41) (xy 129.54 105.41)
 		)
 		(stroke
@@ -3023,16 +2703,6 @@
 			(type default)
 		)
 		(uuid "f5d75954-ece0-4a28-9c68-0af8e0ad32d2")
-	)
-	(wire
-		(pts
-			(xy 113.03 92.71) (xy 113.03 88.9)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f9b283bd-832e-4da4-a2b0-78d8db8a91c0")
 	)
 	(wire
 		(pts
@@ -3407,71 +3077,6 @@
 			(project "SFS"
 				(path "/3517b18a-50fb-4c6e-bddd-955d55f67cd1"
 					(reference "D3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 113.03 92.71 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "08894c64-de7e-4a54-ae34-f4979bab800d")
-		(property "Reference" "#PWR08"
-			(at 113.03 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 113.03 96.52 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 113.03 92.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 113.03 92.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 113.03 92.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "7a9e3438-3886-437f-87f8-b8c3198e0202")
-		)
-		(instances
-			(project "SFS"
-				(path "/3517b18a-50fb-4c6e-bddd-955d55f67cd1"
-					(reference "#PWR08")
 					(unit 1)
 				)
 			)
@@ -4181,76 +3786,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:Screw_Terminal_01x02")
-		(at 138.43 55.88 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "495ace35-aa34-4c91-bdb0-f1cf9e68963c")
-		(property "Reference" "J4"
-			(at 143.51 55.245 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "Screw_Terminal_01x02"
-			(at 143.51 57.785 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "SapFlow_Footprints:Wurth_Screwless45_3.81mm_2"
-			(at 138.43 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 138.43 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 138.43 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "2176a515-2f31-40a1-945a-1b428e030a79")
-		)
-		(pin "2"
-			(uuid "777d8ac4-8ba0-48a0-bf94-e77655e90d0e")
-		)
-		(instances
-			(project "SFS"
-				(path "/3517b18a-50fb-4c6e-bddd-955d55f67cd1"
-					(reference "J4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Mechanical:MountingHole")
 		(at 59.69 177.8 0)
 		(unit 1)
@@ -4309,6 +3844,72 @@
 			(project "SFS"
 				(path "/3517b18a-50fb-4c6e-bddd-955d55f67cd1"
 					(reference "H2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 152.4 72.39 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5a90a7f3-aca3-4c4f-bba5-fbc1fe468376")
+		(property "Reference" "#PWR049"
+			(at 152.4 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 152.4 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 152.4 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 152.4 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 152.4 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "71af5d44-c298-44fc-af9e-280eb7f28105")
+		)
+		(instances
+			(project "SFS"
+				(path "/3517b18a-50fb-4c6e-bddd-955d55f67cd1"
+					(reference "#PWR049")
 					(unit 1)
 				)
 			)
@@ -4744,146 +4345,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Regulator_Linear:L7806")
-		(at 113.03 81.28 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "86e0b20f-4184-437c-b83a-fef5430a206e")
-		(property "Reference" "U6"
-			(at 113.03 74.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "L7806"
-			(at 113.03 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical"
-			(at 113.665 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-					(italic yes)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "http://www.st.com/content/ccc/resource/technical/document/datasheet/41/4f/b3/b0/12/d4/47/88/CD00000444.pdf/files/CD00000444.pdf/jcr:content/translations/en.CD00000444.pdf"
-			(at 113.03 82.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 113.03 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "3d5433d5-8ae8-4981-a498-e550a901c157")
-		)
-		(pin "2"
-			(uuid "4737038a-61b8-4559-8044-e2f4c6ff8627")
-		)
-		(pin "3"
-			(uuid "b6f555cc-d97c-4c06-a98a-e7d9ef21aa9c")
-		)
-		(instances
-			(project "SFS"
-				(path "/3517b18a-50fb-4c6e-bddd-955d55f67cd1"
-					(reference "U6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+6V")
-		(at 149.86 69.85 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "8d175550-dd73-4d96-9b8c-e7b1086a1763")
-		(property "Reference" "#PWR015"
-			(at 146.05 69.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+6V"
-			(at 153.67 69.85 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 149.86 69.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 149.86 69.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 149.86 69.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "9c381cb1-0155-46d6-944c-1620f7e769a9")
-		)
-		(instances
-			(project "SFS"
-				(path "/3517b18a-50fb-4c6e-bddd-955d55f67cd1"
-					(reference "#PWR015")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:LED")
 		(at 226.06 154.94 90)
 		(unit 1)
@@ -5154,16 +4615,33 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 138.43 63.5 0)
+		(lib_id "Diode:SS14")
+		(at 152.4 83.82 270)
+		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "a8fda89f-d4f4-4b8e-973c-73885cdb6950")
-		(property "Reference" "#PWR014"
-			(at 138.43 69.85 0)
+		(uuid "b4e2467b-320b-42b8-a4b8-9ff4950ca455")
+		(property "Reference" "D9"
+			(at 156.464 84.582 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SS14"
+			(at 156.972 82.042 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SMA"
+			(at 147.955 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5171,16 +4649,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GND"
-			(at 138.43 67.31 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 138.43 63.5 0)
+		(property "Datasheet" "https://www.vishay.com/docs/88746/ss12.pdf"
+			(at 152.4 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5188,8 +4658,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
-			(at 138.43 63.5 0)
+		(property "Description" "40V 1A Schottky Diode, SMA"
+			(at 152.4 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5197,8 +4667,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
-			(at 138.43 63.5 0)
+		(property "LCSC" "C2480"
+			(at 152.4 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5207,12 +4677,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "d696a7b2-68e3-41d2-b06f-4cd55250a434")
+			(uuid "659d9219-0fca-417d-9678-963b23ad544e")
+		)
+		(pin "2"
+			(uuid "79176ea3-a2a0-4b7d-a663-c0abfaa98848")
 		)
 		(instances
 			(project "SFS"
 				(path "/3517b18a-50fb-4c6e-bddd-955d55f67cd1"
-					(reference "#PWR014")
+					(reference "D9")
 					(unit 1)
 				)
 			)
@@ -5909,6 +5382,77 @@
 		)
 	)
 	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 152.4 76.2 270)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "effd9632-7ac4-4ff4-9eee-e3b7efee4237")
+		(property "Reference" "JP42"
+			(at 150.368 76.454 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "SolderJumper_2_Open"
+			(at 149.86 77.4699 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
+			(at 152.4 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 152.4 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 152.4 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e2ea0d7a-606f-44aa-9997-155c1b7fe8da")
+		)
+		(pin "2"
+			(uuid "1a9cc96f-5da5-4513-a5b9-cd39d0d8ea68")
+		)
+		(instances
+			(project "SFS"
+				(path "/3517b18a-50fb-4c6e-bddd-955d55f67cd1"
+					(reference "JP42")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector_Generic:Conn_01x02")
 		(at 24.13 53.34 0)
 		(mirror y)
@@ -6185,6 +5729,58 @@
 			(project "SFS"
 				(path "/3517b18a-50fb-4c6e-bddd-955d55f67cd1"
 					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 105.41 77.47)
+		(size 12.7 7.62)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "cc85d451-feef-4d3e-babc-35776f2066d8")
+		(property "Sheetname" "Regulators"
+			(at 105.41 76.7584 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "regulators.kicad_sch"
+			(at 105.41 85.6746 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "Vin" input
+			(at 105.41 81.28 180)
+			(uuid "8665611f-2016-403e-a3e9-b5e79eeeb062")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "SFS"
+				(path "/3517b18a-50fb-4c6e-bddd-955d55f67cd1"
+					(page "4")
 				)
 			)
 		)
