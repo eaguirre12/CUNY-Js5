@@ -227,3 +227,15 @@ Board layout complete.
 - [x] Do I need to switch to a different battery holder to avoid forcing more expensive "Standard" PCBA?
 
 
+## Hand-assembled parts
+
+### Adalogger header
+
+- One 12-pin female and male header
+- One 16-pin female and male header
+
+
+### Battery connector
+
+Option 1: Solder 
+
