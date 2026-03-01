@@ -178,6 +178,11 @@ Bringing in the 1 Ohm shunt resistor from v3, and connecting it to one of the sp
 
 Copying the RTC circuit from v3.
 
+The part I used in v3 (C70377) requires Standard PCBA, which significantly adds to the price. Why did I use it before? I think this changed to Standard since my last order.
+
+I'll switch to MYOUNG BS-06-B4AK001. The footprint is practically identical.
+
+
 
 ### Battery voltage sensing
 
@@ -208,11 +213,17 @@ Copied from v3
 Copied from v3
 
 
+### Board outline
+
+The board is larger this time. Four mounting screws, 4.325 inches apart in a cross shape.
+
+Board layout complete.
+
 
 ## Outstanding TODO
 
 - [ ] Check/document ADC pin assignment
 - [ ] Check polarity of JST battery connector
-
+- [x] Do I need to switch to a different battery holder to avoid forcing more expensive "Standard" PCBA?
 
 

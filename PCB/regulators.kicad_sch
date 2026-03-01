@@ -2,7 +2,7 @@
 	(version 20250114)
 	(generator "eeschema")
 	(generator_version "9.0")
-	(uuid "4f994e33-0ba6-4c99-93e7-ec3838702f1c")
+	(uuid "d676be5d-5754-4690-880e-610a256899bd")
 	(paper "A4")
 	(lib_symbols
 		(symbol "Connector:Screw_Terminal_01x02"
@@ -317,203 +317,6 @@
 					(at 0 -3.81 90)
 					(length 2.794)
 					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Jumper:SolderJumper_2_Bridged"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom no)
-			(on_board yes)
-			(property "Reference" "JP"
-				(at 0 2.032 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "SolderJumper_2_Bridged"
-				(at 0 -2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Solder Jumper, 2-pole, closed/bridged"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "solder jumper SPST"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "SolderJumper*Bridged*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "SolderJumper_2_Bridged_0_1"
-				(rectangle
-					(start -0.508 0.508)
-					(end 0.508 -0.508)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy -0.254 1.016) (xy -0.254 -1.016)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -0.254 -1.016)
-					(mid -1.2656 0)
-					(end -0.254 1.016)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -0.254 -1.016)
-					(mid -1.2656 0)
-					(end -0.254 1.016)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(arc
-					(start 0.254 1.016)
-					(mid 1.2656 0)
-					(end 0.254 -1.016)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 0.254 1.016)
-					(mid 1.2656 0)
-					(end 0.254 -1.016)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.254 1.016) (xy 0.254 -1.016)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "SolderJumper_2_Bridged_1_1"
-				(pin passive line
-					(at -3.81 0 0)
-					(length 2.54)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 3.81 0 180)
-					(length 2.54)
-					(name "B"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1212,7 +1015,7 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "There are two supported ways to power the Adalogger.\n\nThe old way is to connect 5V to the USB port using a\nshort \"pig-tail\" cable, connected to a push terminal.\n\nThe new way is to use a 3.3V regulator on the sensor\nboard connected to the 3.3V pin on the Adalogger.\nThis should be safe, but I'm including the old way\njust in case.\n\nTo use the new way, solder JP41 and JP42, and cut JP43.\n\nTo use the old way, populate J4 and use the pig-tail."
+	(text "There are two supported ways to power the Adalogger.\n\nThe old way is to connect 5V to the USB port using a\nshort \"pig-tail\" cable, connected to a push terminal.\n\nThe new way is to use a 3.3V regulator on the sensor\nboard connected to the 3.3V pin on the Adalogger.\nThis should be safe, but I'm including the old way\njust in case.\n\nTo use the new way, solder JP41 and JP42.\n\nTo use the old way, solder JP43, populate J4 and use the pig-tail."
 		(exclude_from_sim no)
 		(at 152.908 90.17 0)
 		(effects
@@ -1459,16 +1262,6 @@
 	)
 	(wire
 		(pts
-			(xy 101.6 123.19) (xy 101.6 125.73)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "dfa7e076-15af-420a-a0ab-574aed047466")
-	)
-	(wire
-		(pts
 			(xy 60.96 60.96) (xy 73.66 60.96)
 		)
 		(stroke
@@ -1562,76 +1355,6 @@
 			(project "SFS"
 				(path "/3517b18a-50fb-4c6e-bddd-955d55f67cd1/cc85d451-feef-4d3e-babc-35776f2066d8"
 					(reference "C15")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Jumper:SolderJumper_2_Bridged")
-		(at 60.96 93.98 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "14f5225c-1c2b-4b3e-8ffd-d78513a42870")
-		(property "Reference" "JP43"
-			(at 63.5 92.7099 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "SolderJumper_2_Bridged"
-			(at 63.5 95.2499 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Bridged_Pad1.0x1.5mm"
-			(at 60.96 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 60.96 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Solder Jumper, 2-pole, closed/bridged"
-			(at 60.96 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "07168da5-5908-4d51-8c25-4468628477d7")
-		)
-		(pin "2"
-			(uuid "4300b891-2c2d-4b57-806b-6d26dcf0c991")
-		)
-		(instances
-			(project ""
-				(path "/3517b18a-50fb-4c6e-bddd-955d55f67cd1/cc85d451-feef-4d3e-babc-35776f2066d8"
-					(reference "JP43")
 					(unit 1)
 				)
 			)
@@ -2294,17 +2017,36 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+3V3")
-		(at 101.6 123.19 0)
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 60.96 93.98 90)
+		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "78e5ebff-6171-46ce-91b6-4812f09e67bd")
-		(property "Reference" "#PWR020"
-			(at 101.6 127 0)
+		(uuid "80937bc0-2aeb-48ef-96cf-1b07d94e01b6")
+		(property "Reference" "JP43"
+			(at 64.516 95.758 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "SolderJumper_2_Open"
+			(at 63.5 92.7101 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
+			(at 60.96 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2312,16 +2054,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3V3"
-			(at 101.6 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 101.6 123.19 0)
+		(property "Datasheet" "~"
+			(at 60.96 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2329,17 +2063,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
-			(at 101.6 123.19 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 101.6 123.19 0)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 60.96 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2348,12 +2073,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "9b894fed-c6dc-4d8c-9221-2015b31f41fd")
+			(uuid "5eac8c14-f3ca-48c1-a0d7-1f9af897c398")
+		)
+		(pin "2"
+			(uuid "47207475-3a36-4c11-a301-729423abcddb")
 		)
 		(instances
 			(project "SFS"
 				(path "/3517b18a-50fb-4c6e-bddd-955d55f67cd1/cc85d451-feef-4d3e-babc-35776f2066d8"
-					(reference "#PWR020")
+					(reference "JP43")
 					(unit 1)
 				)
 			)
@@ -2580,7 +2308,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ba403267-82a6-403f-8267-0917e0e45e3d")
-		(property "Reference" "#PWR015"
+		(property "Reference" "#PWR0103"
 			(at 73.66 91.44 0)
 			(effects
 				(font
@@ -2630,7 +2358,7 @@
 		(instances
 			(project "SFS"
 				(path "/3517b18a-50fb-4c6e-bddd-955d55f67cd1/cc85d451-feef-4d3e-babc-35776f2066d8"
-					(reference "#PWR015")
+					(reference "#PWR0103")
 					(unit 1)
 				)
 			)
